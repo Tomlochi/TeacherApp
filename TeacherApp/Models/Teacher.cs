@@ -31,8 +31,8 @@ namespace TeacherApp.Models
             List<Review> reviews = new List<Review>();
         }
 
-        public Teacher(int id, string firstname, string lastname, string phone, string gender, string email, string address, DateTime dateofbirth, List<Course> tutoring, DateTime graduated, List<Review> review, int rating, string about, int lessonPrice, string Imagepath)
-             : base(id, firstname, lastname, phone, gender, email, address, dateofbirth)
+        public Teacher(int id, string firstname, string lastname,string password, string phone, string gender, string email, string address, DateTime dateofbirth, List<Course> tutoring, DateTime graduated, List<Review> review, int rating, string about, int lessonPrice, string Imagepath)
+             : base(id, firstname, lastname,password, phone, gender, email, address, dateofbirth)
         {
 
             this.Tutoring = tutoring;
@@ -46,7 +46,7 @@ namespace TeacherApp.Models
 
 
         public Teacher(Teacher teacher)
-            : base(teacher.ID, teacher.FirstName, teacher.LastName, teacher.Phone, teacher.Gender, teacher.Email, teacher.Address, teacher.DateOfBirth)
+            : base(teacher.ID, teacher.FirstName, teacher.LastName, teacher.Password ,teacher.Phone, teacher.Gender, teacher.Email, teacher.Address, teacher.DateOfBirth)
         {
 
             this.Tutoring = teacher.Tutoring;
