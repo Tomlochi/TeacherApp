@@ -1,0 +1,122 @@
+﻿<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/UserSignUp.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <!-- Website CSS style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+  
+</head>
+<body>
+    <div class="container">
+        <div class="row main">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+
+                </div>
+            </div>
+            <div class="main-login main-center">
+                <form class="form-horizontal" method="post" action="#">
+
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">First Name</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter your First Name" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Last Name</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="far fa-user" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="cols-sm-2 control-label">Password</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Phone</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fas fa-phone-volume" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Phone" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Gender</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fas fa-transgender" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Gender" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">Address</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Adress" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">Date Of Birth</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fas fa-birthday-cake" aria-hidden="true"></i></span>
+                                <input type="date" class="form-control" name="username" id="username" placeholder="dd/mm/year" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group ">
+                        <button input type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                    </div>
+
+
+                    <div class="login-register">
+                        <li><a asp-area="" asp-controller="UserPanel" asp-action="UserLogin"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                    </div>
+                </form>
+            </div>
+
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+</body>
+</html>

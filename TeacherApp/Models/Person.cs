@@ -12,10 +12,11 @@ namespace TeacherApp.Models
     public Person() { }
 
 
-        public Person(int id, string firstname, string lastname, string phone, string gender, string email, string address, DateTime dateofbirth)
+        public Person(int id, string firstname, string lastname,string password, string phone, string gender, string email, string address, DateTime dateofbirth)
         {
             this.ID = id;
             this.FirstName = firstname;
+            this.Password = password;
             this.LastName = lastname;
             this.Phone = phone;
             this.Gender = Gender;
@@ -38,6 +39,8 @@ namespace TeacherApp.Models
         [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Last name must contain letters only")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+        public string Password { get; set; }
 
         [Display(Name = "Phone Number")]
         [DataType(DataType.PhoneNumber)]

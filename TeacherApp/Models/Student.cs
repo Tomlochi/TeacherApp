@@ -13,14 +13,14 @@ namespace TeacherApp.Models
        public virtual Institution Institution { get; set; }
 
         public Student() { }
-        public Student(int id, string firstname, string lastname, string phone, string gender, string email, string address, DateTime dateofbirth, DateTime activesince, Degree degree, Institution institution)
-            : base(id, firstname, lastname, phone, gender, email, address, dateofbirth)
+        public Student(int id, string firstname, string lastname,string password, string phone, string gender, string email, string address, DateTime dateofbirth, DateTime activesince, Degree degree, Institution institution)
+            : base(id, firstname, lastname, password, phone, gender, email, address, dateofbirth)
         {
             this.Degree = degree;
             this.Institution = institution;
         }
         public Student(Student student)
-            : base(student.ID, student.FirstName, student.LastName, student.Phone, student.Gender, student.Email, student.Address, student.DateOfBirth)
+            : base(student.ID, student.FirstName, student.LastName,student.Password, student.Phone, student.Gender, student.Email, student.Address, student.DateOfBirth)
         {
             this.Degree = student.Degree;
             this.Institution = student.Institution;
