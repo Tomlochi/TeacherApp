@@ -30,8 +30,32 @@ namespace TeacherApp.Controllers
         {
             return View();
         }
+        // GET: Users/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
 
+        // POST: AdminPanel/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        public IActionResult Login(string username, string password)
+        {
+            var authResult = (from person in _context.Persons where (person.Email == username && person.Password == password) select person).ToList();
+            bool existUser = authResult.ToList().Any(person => person.Email == username);
+            bool existPass = authResult.ToList().Any(person => person.Password == password);
+            if (existUser && existPass)
+            {
+                return Redirect("/Home/Index");
+            }
+            else
+            {
+                ViewBag.Message = "invalid user or password!";
+                return View();
+            }
+        }
 
     }
-   
+
 }

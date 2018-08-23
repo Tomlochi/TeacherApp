@@ -25,14 +25,15 @@ namespace TeacherApp.Models
         public string ImagePath { get; set; }
 
 
+
         public Teacher()
         {
             List<Course> courses = new List<Course>();
             List<Review> reviews = new List<Review>();
         }
 
-        public Teacher(int id, string firstname, string lastname,string password, string phone, string gender, string email, string address, DateTime dateofbirth, List<Course> tutoring, DateTime graduated, List<Review> review, int rating, string about, int lessonPrice, string Imagepath)
-             : base(id, firstname, lastname,password, phone, gender, email, address, dateofbirth)
+        public Teacher(int id, string firstname, string lastname,string password, string phone, string gender, string email, string address, DateTime dateofbirth, List<Course> tutoring, DateTime graduated, List<Review> review, int rating, string about, int lessonPrice, string Imagepath, bool isAdmin)
+             : base(id, firstname, lastname,password, phone, gender, email, address, dateofbirth, isAdmin)
         {
 
             this.Tutoring = tutoring;
@@ -42,11 +43,12 @@ namespace TeacherApp.Models
             this.About = about;
             this.LessonPrice = lessonPrice;
             this.ImagePath = Imagepath;
+            this.isAdmin = isAdmin;
         }
 
 
         public Teacher(Teacher teacher)
-            : base(teacher.ID, teacher.FirstName, teacher.LastName, teacher.Password ,teacher.Phone, teacher.Gender, teacher.Email, teacher.Address, teacher.DateOfBirth)
+            : base(teacher.ID, teacher.FirstName, teacher.LastName, teacher.Password ,teacher.Phone, teacher.Gender, teacher.Email, teacher.Address, teacher.DateOfBirth, teacher.isAdmin)
         {
 
             this.Tutoring = teacher.Tutoring;
@@ -57,6 +59,7 @@ namespace TeacherApp.Models
             this.About = teacher.About;
             this.LessonPrice = teacher.LessonPrice;
             this.ImagePath = teacher.ImagePath;
+            this.isAdmin = teacher.isAdmin;
         }
 
 
