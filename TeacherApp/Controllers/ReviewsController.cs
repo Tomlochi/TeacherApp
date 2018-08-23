@@ -21,7 +21,7 @@ namespace TeacherApp.Controllers
         // GET: Reviews
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Review.ToListAsync());
+            return View(await _context.Reviews.ToListAsync());
         }
 
         // GET: Reviews/Details/5
@@ -32,7 +32,7 @@ namespace TeacherApp.Controllers
                 return NotFound();
             }
 
-            var review = await _context.Review
+            var review = await _context.Reviews
                 .SingleOrDefaultAsync(m => m.ReviewID == id);
             if (review == null)
             {
@@ -72,7 +72,7 @@ namespace TeacherApp.Controllers
                 return NotFound();
             }
 
-            var review = await _context.Review.SingleOrDefaultAsync(m => m.ReviewID == id);
+            var review = await _context.Reviews.SingleOrDefaultAsync(m => m.ReviewID == id);
             if (review == null)
             {
                 return NotFound();
@@ -123,7 +123,7 @@ namespace TeacherApp.Controllers
                 return NotFound();
             }
 
-            var review = await _context.Review
+            var review = await _context.Reviews
                 .SingleOrDefaultAsync(m => m.ReviewID == id);
             if (review == null)
             {
@@ -138,15 +138,15 @@ namespace TeacherApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var review = await _context.Review.SingleOrDefaultAsync(m => m.ReviewID == id);
-            _context.Review.Remove(review);
+            var review = await _context.Reviews.SingleOrDefaultAsync(m => m.ReviewID == id);
+            _context.Reviews.Remove(review);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ReviewExists(int id)
         {
-            return _context.Review.Any(e => e.ReviewID == id);
+            return _context.Reviews.Any(e => e.ReviewID == id);
         }
     }
 }

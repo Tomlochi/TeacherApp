@@ -21,7 +21,7 @@ namespace TeacherApp.Controllers
         // GET: Institutions
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Institution.ToListAsync());
+            return View(await _context.Institutions.ToListAsync());
         }
 
         // GET: Institutions/Details/5
@@ -32,7 +32,7 @@ namespace TeacherApp.Controllers
                 return NotFound();
             }
 
-            var institution = await _context.Institution
+            var institution = await _context.Institutions
                 .SingleOrDefaultAsync(m => m.InstitutionID == id);
             if (institution == null)
             {
@@ -72,7 +72,7 @@ namespace TeacherApp.Controllers
                 return NotFound();
             }
 
-            var institution = await _context.Institution.SingleOrDefaultAsync(m => m.InstitutionID == id);
+            var institution = await _context.Institutions.SingleOrDefaultAsync(m => m.InstitutionID == id);
             if (institution == null)
             {
                 return NotFound();
@@ -123,7 +123,7 @@ namespace TeacherApp.Controllers
                 return NotFound();
             }
 
-            var institution = await _context.Institution
+            var institution = await _context.Institutions
                 .SingleOrDefaultAsync(m => m.InstitutionID == id);
             if (institution == null)
             {
@@ -138,15 +138,15 @@ namespace TeacherApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var institution = await _context.Institution.SingleOrDefaultAsync(m => m.InstitutionID == id);
-            _context.Institution.Remove(institution);
+            var institution = await _context.Institutions.SingleOrDefaultAsync(m => m.InstitutionID == id);
+            _context.Institutions.Remove(institution);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool InstitutionExists(int id)
         {
-            return _context.Institution.Any(e => e.InstitutionID == id);
+            return _context.Institutions.Any(e => e.InstitutionID == id);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace TeacherApp.Models
         Institution Institution { get; set; }
 
         public Student() { }
-        public Student(int id, string firstname, string lastname, string phone, Gender gender, string email, string address, DateTime dateofbirth, DateTime activesince, Degree degree, Institution institution)
+        public Student(int id, string firstname, string lastname, string phone, string gender, string email, string address, DateTime dateofbirth, DateTime activesince, Degree degree, Institution institution)
             : base(id, firstname, lastname, phone, gender, email, address, dateofbirth, activesince)
         {
             this.Degree = degree;

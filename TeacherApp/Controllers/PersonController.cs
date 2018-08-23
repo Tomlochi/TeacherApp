@@ -21,7 +21,7 @@ namespace TeacherApp.Controllers
         // GET: People
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Person.ToListAsync());
+            return View(await _context.Persons.ToListAsync());
         }
 
         // GET: People/Details/5
@@ -32,7 +32,7 @@ namespace TeacherApp.Controllers
                 return NotFound();
             }
 
-            var person = await _context.Person
+            var person = await _context.Persons
                 .SingleOrDefaultAsync(m => m.ID == id);
             if (person == null)
             {
@@ -72,7 +72,7 @@ namespace TeacherApp.Controllers
                 return NotFound();
             }
 
-            var person = await _context.Person.SingleOrDefaultAsync(m => m.ID == id);
+            var person = await _context.Persons.SingleOrDefaultAsync(m => m.ID == id);
             if (person == null)
             {
                 return NotFound();
@@ -123,7 +123,7 @@ namespace TeacherApp.Controllers
                 return NotFound();
             }
 
-            var person = await _context.Person
+            var person = await _context.Persons
                 .SingleOrDefaultAsync(m => m.ID == id);
             if (person == null)
             {
@@ -138,15 +138,15 @@ namespace TeacherApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var person = await _context.Person.SingleOrDefaultAsync(m => m.ID == id);
-            _context.Person.Remove(person);
+            var person = await _context.Persons.SingleOrDefaultAsync(m => m.ID == id);
+            _context.Persons.Remove(person);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PersonExists(int id)
         {
-            return _context.Person.Any(e => e.ID == id);
+            return _context.Persons.Any(e => e.ID == id);
         }
     }
 }

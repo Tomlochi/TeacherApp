@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeacherApp.Models;
 
 namespace TeacherApp.Migrations
 {
     [DbContext(typeof(TeacherAppContext))]
-    partial class TeacherAppContextModelSnapshot : ModelSnapshot
+    [Migration("20180822194143_Initial3")]
+    partial class Initial3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,7 +39,7 @@ namespace TeacherApp.Migrations
 
                     b.HasIndex("TeacherID");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Course");
                 });
 
             modelBuilder.Entity("TeacherApp.Models.Degree", b =>
@@ -55,7 +57,7 @@ namespace TeacherApp.Migrations
 
                     b.HasIndex("InstitutionID");
 
-                    b.ToTable("Degrees");
+                    b.ToTable("Degree");
                 });
 
             modelBuilder.Entity("TeacherApp.Models.Institution", b =>
@@ -71,7 +73,7 @@ namespace TeacherApp.Migrations
 
                     b.HasKey("InstitutionID");
 
-                    b.ToTable("Institutions");
+                    b.ToTable("Institution");
                 });
 
             modelBuilder.Entity("TeacherApp.Models.Person", b =>
@@ -100,7 +102,7 @@ namespace TeacherApp.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Persons");
+                    b.ToTable("Person");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Person");
                 });
@@ -157,7 +159,7 @@ namespace TeacherApp.Migrations
 
                     b.HasIndex("InstitutionID");
 
-                    b.ToTable("Teachers");
+                    b.ToTable("Teacher");
 
                     b.HasDiscriminator().HasValue("Teacher");
                 });
