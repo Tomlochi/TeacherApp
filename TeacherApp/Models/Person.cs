@@ -11,11 +11,8 @@ namespace TeacherApp.Models
     {
     public Person() { }
 
-        //public Person(int id)
-        //{
-        //    this.ID = id;
-        //}
-        public Person(int id, string firstname, string lastname, string phone, string gender, string email, string address, DateTime dateofbirth, DateTime activesince)
+
+        public Person(int id, string firstname, string lastname, string phone, string gender, string email, string address, DateTime dateofbirth)
         {
             this.ID = id;
             this.FirstName = firstname;
@@ -25,20 +22,7 @@ namespace TeacherApp.Models
             this.Email = email;
             this.Address = address;
             this.DateOfBirth = dateofbirth;
-            this.ActiveSince = activesince;
         }
-        //public Person(Person person)
-        //{
-        //    this.ID = person.ID;
-        //    this.FirstName = person.FirstName;
-        //    this.LastName = person.LastName;
-        //    this.Phone = person.Phone;
-        //    this.Gender = person.Gender;
-        //    this.Email = person.Email;
-        //    this.Address = person.Address;
-        //    this.DateOfBirth = person.DateOfBirth;
-        //    this.ActiveSince = person.ActiveSince;
-        //}
 
 
         public int ID { get; set; }
@@ -69,9 +53,5 @@ namespace TeacherApp.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-mm-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-mm-dd}", ApplyFormatInEditMode = true)]
-        public DateTime ActiveSince { get; set; }
     }
 }

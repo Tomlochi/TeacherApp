@@ -53,7 +53,7 @@ namespace TeacherApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ReviewID,Published,Rating,StudentID,TeacherID,ReviewContent")] Review review)
+        public async Task<IActionResult> Create([Bind("ReviewID,Published,Rating,TeacherID,ReviewContent")] Review review)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace TeacherApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ReviewID,Published,Rating,StudentID,TeacherID,ReviewContent")] Review review)
+        public async Task<IActionResult> Edit(int id, [Bind("ReviewID,Published,Rating,TeacherID,ReviewContent")] Review review)
         {
             if (id != review.ReviewID)
             {

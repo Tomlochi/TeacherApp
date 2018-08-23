@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeacherApp.Models;
 
 namespace TeacherApp.Migrations
 {
     [DbContext(typeof(TeacherAppContext))]
-    partial class TeacherAppContextModelSnapshot : ModelSnapshot
+    [Migration("20180823101402_delete-sudentID")]
+    partial class deletesudentID
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,6 +81,8 @@ namespace TeacherApp.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("ActiveSince");
+
                     b.Property<string>("Address");
 
                     b.Property<DateTime>("DateOfBirth");
@@ -131,13 +135,6 @@ namespace TeacherApp.Migrations
                 {
                     b.HasBaseType("TeacherApp.Models.Person");
 
-                    b.Property<int?>("DegreeID");
-
-                    b.Property<int?>("InstitutionID");
-
-                    b.HasIndex("DegreeID");
-
-                    b.HasIndex("InstitutionID");
 
                     b.ToTable("Student");
 
@@ -150,12 +147,13 @@ namespace TeacherApp.Migrations
 
                     b.Property<string>("About");
 
+                    b.Property<DateTime>("Enrolled");
+
                     b.Property<DateTime>("Graduated");
 
                     b.Property<string>("ImagePath");
 
-                    b.Property<int?>("InstitutionID")
-                        .HasColumnName("Teacher_InstitutionID");
+                    b.Property<int?>("InstitutionID");
 
                     b.Property<int>("LessonPrice");
 
@@ -192,17 +190,6 @@ namespace TeacherApp.Migrations
                         .WithMany("Reviews")
                         .HasForeignKey("TeacherID")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TeacherApp.Models.Student", b =>
-                {
-                    b.HasOne("TeacherApp.Models.Degree", "Degree")
-                        .WithMany()
-                        .HasForeignKey("DegreeID");
-
-                    b.HasOne("TeacherApp.Models.Institution", "Institution")
-                        .WithMany()
-                        .HasForeignKey("InstitutionID");
                 });
 
             modelBuilder.Entity("TeacherApp.Models.Teacher", b =>
