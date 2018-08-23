@@ -36,20 +36,21 @@
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 html {
-    font-family: sans-serif;
+    font-family: "Source Sans Pro";
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
 
 body {
     margin: 0;
-    font-family: "Segoe UI", "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
+    font-family: "Segoe UI", "Source Sans Pro", Calibri, Candara, Arial;
     font-size: 0.9375rem;
     font-weight: 400;
     line-height: 1.5;
     color: #373a3c;
     text-align: left;
     background-color: #fff;
+    background-image: url("../../../../images/background.png");
 }
 
 article,
@@ -1487,6 +1488,25 @@ img {
     display: block;
     max-width: 100%;
     height: auto;
+    -webkit-filter: grayscale(40%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(40%);
+}
+@keyframes zoominoutsinglefeatured {
+    0% {
+        transform: scale(1,1);
+    }
+
+    50% {
+        transform: scale(1.2,1.2);
+    }
+
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+.img-responsive {
+    animation: zoominoutsinglefeatured 8s infinite;
 }
 
 .img-rounded {
@@ -3790,7 +3810,7 @@ select[multiple].input-lg {
 .btn {
     display: inline-block;
     padding: 6px 12px;
-    margin-bottom: 0;
+    margin-bottom: 0px;
     font-size: 14px;
     font-weight: normal;
     line-height: 1.42857143;
@@ -3853,6 +3873,7 @@ fieldset[disabled] a.btn {
     color: #333;
     background-color: #fff;
     border-color: #ccc;
+    margin-bottom:2px;
 }
 
     .btn-default:focus,
@@ -7828,7 +7849,7 @@ button.close {
 .carousel-caption {
     position: absolute;
     right: 15%;
-    bottom: 20px;
+    bottom: 300px;
     left: 15%;
     z-index: 10;
     padding-top: 20px;

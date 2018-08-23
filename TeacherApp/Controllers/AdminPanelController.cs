@@ -26,7 +26,7 @@ namespace TeacherApp.Controllers
         }
 
 
-        public ActionResult AdminPanelLogin()
+        public IActionResult AdminPanelLogin()
         {
             return View();
         }
