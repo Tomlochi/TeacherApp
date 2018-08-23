@@ -9,24 +9,17 @@ namespace TeacherApp.Models
 
     public class Teacher : Person
     {
-        public List<Course> Tutoring { get; set; }
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-mm-dd}", ApplyFormatInEditMode = true)]
-        public DateTime Enrolled { get; set; }
+        public virtual ICollection<Course> Tutoring { get; } = new List<Course>();
+        public virtual ICollection<Review> Reviews { get; } = new List<Review>();
+ 
+        public virtual Institution Institution { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-mm-dd}", ApplyFormatInEditMode = true)]
         public DateTime Graduated { get; set; }
 
-
-        public List<Review> Reviews { get; set; }
-        public Institution Institution { get; set; }
-
         [Required]
         public int Rating { set; get; }
-
-
         public string About { set; get; }
         public int LessonPrice { get; set; }
         public string ImagePath { get; set; }
@@ -38,14 +31,12 @@ namespace TeacherApp.Models
             List<Review> reviews = new List<Review>();
         }
 
-        public Teacher(int id, string firstname, string lastname, string phone, string gender, string email, string address, DateTime dateofbirth, DateTime activesince, List<Course> tutoring, DateTime enrolled, DateTime graduated, List<Review> review, int rating, string about, int lessonPrice, string Imagepath)
-             : base(id, firstname, lastname, phone, gender, email, address, dateofbirth, activesince)
+        public Teacher(int id, string firstname, string lastname, string phone, string gender, string email, string address, DateTime dateofbirth, List<Course> tutoring, DateTime graduated, List<Review> review, int rating, string about, int lessonPrice, string Imagepath)
+             : base(id, firstname, lastname, phone, gender, email, address, dateofbirth)
         {
 
             this.Tutoring = tutoring;
-            this.Enrolled = enrolled;
             this.Graduated = graduated;
-            this.ActiveSince = activesince;
             this.Reviews = review;
             this.Rating = rating;
             this.About = about;
@@ -55,13 +46,11 @@ namespace TeacherApp.Models
 
 
         public Teacher(Teacher teacher)
-            : base(teacher.ID, teacher.FirstName, teacher.LastName, teacher.Phone, teacher.Gender, teacher.Email, teacher.Address, teacher.DateOfBirth, teacher.ActiveSince)
+            : base(teacher.ID, teacher.FirstName, teacher.LastName, teacher.Phone, teacher.Gender, teacher.Email, teacher.Address, teacher.DateOfBirth)
         {
 
             this.Tutoring = teacher.Tutoring;
-            this.Enrolled = teacher.Enrolled;
             this.Graduated = teacher.Graduated;
-            this.ActiveSince = teacher.ActiveSince;
             this.Reviews = teacher.Reviews;
             this.Institution = teacher.Institution;
             this.Rating = teacher.Rating;

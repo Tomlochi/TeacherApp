@@ -9,18 +9,18 @@ namespace TeacherApp.Models
     public class Student : Person
     {
 
-        Degree Degree { get; set; }
-        Institution Institution { get; set; }
+       public virtual Degree Degree { get; set; }
+       public virtual Institution Institution { get; set; }
 
         public Student() { }
         public Student(int id, string firstname, string lastname, string phone, string gender, string email, string address, DateTime dateofbirth, DateTime activesince, Degree degree, Institution institution)
-            : base(id, firstname, lastname, phone, gender, email, address, dateofbirth, activesince)
+            : base(id, firstname, lastname, phone, gender, email, address, dateofbirth)
         {
             this.Degree = degree;
             this.Institution = institution;
         }
         public Student(Student student)
-            : base(student.ID, student.FirstName, student.LastName, student.Phone, student.Gender, student.Email, student.Address, student.DateOfBirth, student.ActiveSince)
+            : base(student.ID, student.FirstName, student.LastName, student.Phone, student.Gender, student.Email, student.Address, student.DateOfBirth)
         {
             this.Degree = student.Degree;
             this.Institution = student.Institution;
