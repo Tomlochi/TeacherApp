@@ -9,23 +9,39 @@ namespace TeacherApp.Models
 {
     public class TeacherAppContext : DbContext
     {
-        public TeacherAppContext (DbContextOptions<TeacherAppContext> options)
-            : base(options)
+        //    public TeacherAppContext (DbContextOptions<TeacherAppContext> options)
+        //        : base(options)
+        //    {
+        //    }
+
+        //    public DbSet<TeacherApp.Models.Person> Person { get; set; }
+
+        //    public DbSet<TeacherApp.Models.Course> Course { get; set; }
+
+        //    public DbSet<TeacherApp.Models.Degree> Degree { get; set; }
+
+        //    public DbSet<TeacherApp.Models.Institution> Institution { get; set; }
+
+        //    public DbSet<TeacherApp.Models.Review> Review { get; set; }
+
+        //    public DbSet<TeacherApp.Models.Student> Student { get; set; }
+
+        //    public DbSet<TeacherApp.Models.Teacher> Teacher { get; set; }
+        //}
+
+
+        public TeacherAppContext(DbContextOptions<TeacherAppContext> options) : base(options) { }
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Person>().ToTable("Persons");
+            modelBuilder.Entity<Course>().ToTable("Courses");
+            modelBuilder.Entity<Review>().ToTable("Review");
+            modelBuilder.Entity<Teacher>().ToTable("Teachers");
         }
-
-        public DbSet<TeacherApp.Models.Person> Person { get; set; }
-
-        public DbSet<TeacherApp.Models.Course> Course { get; set; }
-
-        public DbSet<TeacherApp.Models.Degree> Degree { get; set; }
-
-        public DbSet<TeacherApp.Models.Institution> Institution { get; set; }
-
-        public DbSet<TeacherApp.Models.Review> Review { get; set; }
-
-        public DbSet<TeacherApp.Models.Student> Student { get; set; }
-
-        public DbSet<TeacherApp.Models.Teacher> Teacher { get; set; }
     }
 }

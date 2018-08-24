@@ -27,64 +27,25 @@ namespace TeacherApp.Migrations
 
                     b.Property<int>("Credits");
 
-                    b.Property<int?>("DegreeID");
-
                     b.Property<int?>("TeacherID");
 
                     b.HasKey("CourseID");
 
-                    b.HasIndex("DegreeID");
-
                     b.HasIndex("TeacherID");
 
-                    b.ToTable("Course");
-                });
-
-            modelBuilder.Entity("TeacherApp.Models.Degree", b =>
-                {
-                    b.Property<int>("DegreeID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("DegreeName");
-
-                    b.Property<int>("DurationinYears");
-
-                    b.Property<int?>("InstitutionID");
-
-                    b.HasKey("DegreeID");
-
-                    b.HasIndex("InstitutionID");
-
-                    b.ToTable("Degree");
-                });
-
-            modelBuilder.Entity("TeacherApp.Models.Institution", b =>
-                {
-                    b.Property<int>("InstitutionID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("InstitutionType");
-
-                    b.Property<string>("Location");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("InstitutionID");
-
-                    b.ToTable("Institution");
+                    b.ToTable("Courses");
                 });
 
             modelBuilder.Entity("TeacherApp.Models.Person", b =>
                 {
                     b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(9);
-
-                    b.Property<DateTime>("ActiveSince");
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address");
 
                     b.Property<DateTime>("DateOfBirth");
+
+                    b.Property<string>("Degree");
 
                     b.Property<string>("Discriminator")
                         .IsRequired();
@@ -92,20 +53,25 @@ namespace TeacherApp.Migrations
                     b.Property<string>("Email");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(20);
+                        .IsRequired();
 
-                    b.Property<int>("Gender");
+                    b.Property<string>("Gender");
+
+                    b.Property<string>("Institution");
+
+                    b.Property<bool>("IsAdmin");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(20);
+                        .IsRequired();
+
+                    b.Property<string>("Password")
+                        .IsRequired();
 
                     b.Property<string>("Phone");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Person");
+                    b.ToTable("Persons");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Person");
                 });
@@ -121,8 +87,6 @@ namespace TeacherApp.Migrations
 
                     b.Property<string>("ReviewContent");
 
-                    b.Property<int>("StudentID");
-
                     b.Property<int>("TeacherID");
 
                     b.HasKey("ReviewID");
@@ -132,57 +96,30 @@ namespace TeacherApp.Migrations
                     b.ToTable("Review");
                 });
 
-            modelBuilder.Entity("TeacherApp.Models.Student", b =>
-                {
-                    b.HasBaseType("TeacherApp.Models.Person");
-
-
-                    b.ToTable("Student");
-
-                    b.HasDiscriminator().HasValue("Student");
-                });
-
             modelBuilder.Entity("TeacherApp.Models.Teacher", b =>
                 {
                     b.HasBaseType("TeacherApp.Models.Person");
 
                     b.Property<string>("About");
 
-                    b.Property<DateTime>("Enrolled");
-
                     b.Property<DateTime>("Graduated");
 
                     b.Property<string>("ImagePath");
-
-                    b.Property<int?>("InstitutionID");
 
                     b.Property<int>("LessonPrice");
 
                     b.Property<int>("Rating");
 
-                    b.HasIndex("InstitutionID");
-
-                    b.ToTable("Teacher");
+                    b.ToTable("Teachers");
 
                     b.HasDiscriminator().HasValue("Teacher");
                 });
 
             modelBuilder.Entity("TeacherApp.Models.Course", b =>
                 {
-                    b.HasOne("TeacherApp.Models.Degree")
-                        .WithMany("courses")
-                        .HasForeignKey("DegreeID");
-
                     b.HasOne("TeacherApp.Models.Teacher")
                         .WithMany("Tutoring")
                         .HasForeignKey("TeacherID");
-                });
-
-            modelBuilder.Entity("TeacherApp.Models.Degree", b =>
-                {
-                    b.HasOne("TeacherApp.Models.Institution", "institution")
-                        .WithMany()
-                        .HasForeignKey("InstitutionID");
                 });
 
             modelBuilder.Entity("TeacherApp.Models.Review", b =>
@@ -191,13 +128,6 @@ namespace TeacherApp.Migrations
                         .WithMany("Reviews")
                         .HasForeignKey("TeacherID")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TeacherApp.Models.Teacher", b =>
-                {
-                    b.HasOne("TeacherApp.Models.Institution", "Institution")
-                        .WithMany()
-                        .HasForeignKey("InstitutionID");
                 });
 #pragma warning restore 612, 618
         }
