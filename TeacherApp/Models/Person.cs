@@ -9,23 +9,6 @@ namespace TeacherApp.Models
 
     public class Person
     {
-    public Person() { }
-
-
-        public Person(int id, string firstname, string lastname,string password, string phone, string gender, string email, string address, DateTime dateofbirth, bool isAdmin)
-        {
-            this.ID = id;
-            this.FirstName = firstname;
-            this.Password = password;
-            this.LastName = lastname;
-            this.Phone = phone;
-            this.Gender = Gender;
-            this.Email = email;
-            this.Address = address;
-            this.DateOfBirth = dateofbirth;
-            this.isAdmin = isAdmin;
-        }
-
 
         public int ID { get; set; }
 
@@ -58,6 +41,54 @@ namespace TeacherApp.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-mm-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
 
-        public bool isAdmin;
+        public bool IsAdmin { get; set; }
+        public string Degree { get; set; }
+        public string Institution { get; set; }
+
+        public Person() {}
+
+        public Person(int id, string firstname, string lastname, string password, string phone, string gender, string email, string address, DateTime dateofbirth, bool isAdmin, string degree, string institution)
+        {
+            this.ID = id;
+            this.FirstName = firstname;
+            this.Password = password;
+            this.LastName = lastname;
+            this.Phone = phone;
+            this.Gender = Gender;
+            this.Email = email;
+            this.Address = address;
+            this.DateOfBirth = dateofbirth;
+            this.IsAdmin = isAdmin;
+            this.Degree = degree;
+            this.Institution = institution;
+        }
+
+        public Person(int id, string firstname, string lastname, string password, string phone, string gender, string email, string address, DateTime dateofbirth, string degree, string institution)
+        {
+            ID = id;
+            FirstName = firstname;
+            LastName = lastname;
+            Password = password;
+            Phone = phone;
+            Gender = gender;
+            Email = email;
+            Address = address;
+            DateOfBirth = dateofbirth;
+            Degree = degree;
+            Institution = institution;
+        }
+
+        public Person(int iD, string firstName, string lastName, string password, string phone, string gender, string email, string address, DateTime dateOfBirth)
+        {
+            ID = iD;
+            FirstName = firstName;
+            LastName = lastName;
+            Password = password;
+            Phone = phone;
+            Gender = gender;
+            Email = email;
+            Address = address;
+            DateOfBirth = dateOfBirth;
+        }
     }
 }

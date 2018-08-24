@@ -26,8 +26,8 @@ namespace TeacherApp.Models
         {
         }
 
-        public Teacher(int id, string firstname, string lastname,string password, string phone, string gender, string email, string address, DateTime dateofbirth,string degree , string institution, List<Course> tutoring, DateTime graduated, List<Review> review, int rating, string about, int lessonPrice, string Imagepath)
-             : base(id, firstname, lastname,password, phone, gender, email, address, dateofbirth,degree,institution)
+        public Teacher(int id, string firstname, string lastname,string password, string phone, string gender, string email, string address, DateTime dateofbirth,bool isAdmin, string degree , string institution, List<Course> tutoring, DateTime graduated, List<Review> review, int rating, string about, int lessonPrice, string Imagepath)
+             : base(id, firstname, lastname,password, phone, gender, email, address, dateofbirth, isAdmin, degree, institution)
         {
             this.Tutoring = tutoring;
             this.Reviews = review;
@@ -37,11 +37,9 @@ namespace TeacherApp.Models
             this.LessonPrice = lessonPrice;
             this.ImagePath = Imagepath;
         }
-
-
         public Teacher(Teacher teacher)
-            : base(teacher.ID, teacher.FirstName, teacher.LastName, teacher.Password ,teacher.Phone, teacher.Gender, teacher.Email, teacher.Address, teacher.DateOfBirth,teacher.Degree,teacher.Institution)
-        {
+            : base(teacher.ID, teacher.FirstName, teacher.LastName, teacher.Password, teacher.Phone, teacher.Gender, teacher.Email, teacher.Address, teacher.DateOfBirth, teacher.IsAdmin, teacher.Degree, teacher.Institution)
+        { 
 
             this.Tutoring = teacher.Tutoring;
             this.Reviews = teacher.Reviews;
@@ -50,6 +48,22 @@ namespace TeacherApp.Models
             this.About = teacher.About;
             this.LessonPrice = teacher.LessonPrice;
             this.ImagePath = teacher.ImagePath;
+        }
+        public Teacher(Person person, DateTime graduated, int price)
+            : base(person.ID, person.FirstName, person.LastName, person.Password, person.Phone, person.Gender, person.Email, person.Address, person.DateOfBirth, person.IsAdmin, person.Degree, person.Institution)
+        {
+            this.Graduated = graduated;
+            this.LessonPrice = price;
+        }
+
+        public void AddReview(Review review)
+        {
+            Reviews.Add(review);
+        }
+
+        public void AddCourse(Course course)
+        {
+            Tutoring.Add(course);
         }
 
 
