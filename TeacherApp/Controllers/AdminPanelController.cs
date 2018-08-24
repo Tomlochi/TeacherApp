@@ -25,7 +25,7 @@ namespace TeacherApp.Controllers
             return View();
         }
 
-
+        // GET: Admin/Login
         public IActionResult AdminPanelLogin()
         {
             return View();
@@ -35,8 +35,16 @@ namespace TeacherApp.Controllers
         {
             return View();
         }
+        public IActionResult Reset()
+        {
+            return View();
+        }
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
 
-        // POST: AdminPanel/Create
+        // POST: AdminPanel/Dashboard
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -47,11 +55,11 @@ namespace TeacherApp.Controllers
             bool existPass = authResult.ToList().Any(person => person.Password == password);
             if (existUser && existPass)
             {
-                return Redirect("/Home/Index");
+                return Redirect("/AdminPanel/Dashboard");
             }
             else
             {
-                ViewBag.Message = "invalid user or password!";
+                ViewBag.Message = "invalid Username or Password!";
                 return View();
             }
         }

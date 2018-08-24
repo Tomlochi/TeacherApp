@@ -27,7 +27,7 @@ namespace TeacherApp.Models
         }
 
         public Teacher(int id, string firstname, string lastname,string password, string phone, string gender, string email, string address, DateTime dateofbirth,string degree , string institution, List<Course> tutoring, DateTime graduated, List<Review> review, int rating, string about, int lessonPrice, string Imagepath)
-             : base(id, firstname, lastname,password, phone, gender, email, address, dateofbirth,degree,institution)
+             : base(id, firstname, lastname,password, phone, gender, email, address, dateofbirth, degree, institution)
         {
             this.Tutoring = tutoring;
             this.Reviews = review;

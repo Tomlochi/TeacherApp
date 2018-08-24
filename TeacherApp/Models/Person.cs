@@ -12,7 +12,7 @@ namespace TeacherApp.Models
     public Person() { }
 
 
-        public Person(int id, string firstname, string lastname,string password, string phone, string gender, string email, string address, DateTime dateofbirth, bool isAdmin)
+        public Person(int id, string firstname, string lastname,string password, string phone, string gender, string email, string address, DateTime dateofbirth, string degree, string institution)
         {
             this.ID = id;
             this.FirstName = firstname;
@@ -23,7 +23,8 @@ namespace TeacherApp.Models
             this.Email = email;
             this.Address = address;
             this.DateOfBirth = dateofbirth;
-            this.isAdmin = isAdmin;
+            this.Institution = institution;
+            this.Degree = degree;
         }
 
 
@@ -53,6 +54,8 @@ namespace TeacherApp.Models
         public string Email { get; set; }
 
         public string Address { get; set; }
+        public string Degree { get; set; }
+        public string Institution { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-mm-dd}", ApplyFormatInEditMode = true)]
