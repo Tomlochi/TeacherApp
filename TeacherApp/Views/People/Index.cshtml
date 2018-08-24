@@ -37,10 +37,7 @@
                 @Html.DisplayNameFor(model => model.DateOfBirth)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Degree)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Institution)
+                @Html.DisplayNameFor(model => model.isAdmin)
             </th>
             <th></th>
         </tr>
@@ -68,6 +65,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td> 
+            <td>
+                @Html.DisplayFor(modelItem => item.isAdmin)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
