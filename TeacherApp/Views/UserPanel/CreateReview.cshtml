@@ -1,0 +1,97 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@model TeacherApp.Models.Review
+
+@{
+    ViewData["Title"] = "CreateReview";
+
+}
+
+
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/UserSignUp.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <!-- Website CSS style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row main">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+
+                </div>
+            </div>
+            <div class="main-login main-center">
+
+                <form asp-action="CreateReview">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="TeacherID" class="cols-sm-2 control-label">Teacher ID</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span asp-validation-for="TeacherID" class="input-group-addon"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></span>
+                                <input asp-for="TeacherID" type="text" class="form-control" placeholder="Enter Teacher ID" />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label asp-for="Rating" class="cols-sm-2 control-label">Rating</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span asp-validation-for="Rating" class="input-group-addon"><i class="fas fa-star" aria-hidden="true"></i></span>
+                                <input asp-for="Rating" type="text" class="form-control" placeholder="Enter Rate" />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <label asp-for="ReviewContent" class="cols-sm-2 control-label">Review Content</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span asp-validation-for="ReviewContent" class="input-group-addon"><i class="fas fa-align-justify   " aria-hidden="true"></i></span>
+                                <input asp-for="ReviewContent" type="text" class="form-control" placeholder="Enter Review Content" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Published" class="cols-sm-2 control-label">Review Date</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span asp-validation-for="Published" class="input-group-addon"><i class="fas fa-table" aria-hidden="true"></i></span>
+                                <input asp-for="Published" type="date" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <button input type="submit" value="CreateReview" class="btn btn-primary btn-lg btn-block login-button">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+            <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+</body>
+</html>
