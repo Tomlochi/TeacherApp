@@ -1,0 +1,74 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@model TeacherApp.Models.Course
+
+@{
+    ViewData["Title"] = "CreateCourse";
+
+}
+
+
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/UserSignUp.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <!-- Website CSS style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row main">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+
+                </div>
+            </div>
+            <div class="main-login main-center">
+
+                <form asp-action="CreateCourse">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="CourseName" class="cols-sm-2 control-label">Course Name</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span asp-validation-for="CourseName" class="input-group-addon"><i class="fas fa-book-open" aria-hidden="true"></i></span>
+                                <input asp-for="CourseName" type="text" class="form-control" placeholder="Enter your Course Name" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Credits" class="cols-sm-2 control-label">Credits</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span asp-validation-for="Credits" class="input-group-addon"><i class="fas fa-award" aria-hidden="true"></i></span>
+                                <input asp-for="Credits" type="text" class="form-control" placeholder="Enter Number of Credits" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <button input type="submit" value="CreateCourse" class="btn btn-primary btn-lg btn-block login-button">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+            <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+</body>
+</html>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@

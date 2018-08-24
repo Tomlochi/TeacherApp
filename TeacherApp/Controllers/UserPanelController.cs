@@ -38,7 +38,7 @@ namespace TeacherApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Password,Phone,Gender,Email,Address,DateOfBirth")] Person person)
+        public async Task<IActionResult> UserSignUp([Bind("ID,FirstName,LastName,Password,Phone,Gender,Email,Address,DateOfBirth,Degree,Institution")] Person person)
         {
             if (ModelState.IsValid)
             {
@@ -48,5 +48,42 @@ namespace TeacherApp.Controllers
             }
             return View(person);
         }
+
+
+        // GET: Reviews/Create
+        public IActionResult CreateReview()
+        {
+            return View();
+        }
+
+        // POST: Reviews/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateReview([Bind("ReviewID,Published,Rating,TeacherID,ReviewContent")] Review review)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(review);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(review);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
