@@ -1,6 +1,12 @@
 ﻿@*
+
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@model TeacherApp.Models.Person
+
+@{
+    ViewData["Title"] = "AdminLogin";
+}
 
 <html>
 <head>
@@ -16,20 +22,23 @@
                     <h2>Admin Login</h2>
                     <p>Please enter your email and password</p>
                 </div>
-                <form id="Login">
-                    <div class="form-group">
+                <form asp-area="" asp-controller="AdminPanel" asp-action="Dashboard">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <input asp-for="Email" class="form-control" placeholder="Email Address" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
 
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                    </div>
-                    <div class="forgot">
-                        <a href="reset.html">Forgot password?</a>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </form>
-            </div>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Password" class="form-control" placeholder="Password"  type="password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="forgot">
+                            <a href="~/Views/AdminPanel/Reset.cshtml">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+</div>
         </div>
     </div>
 </body>
