@@ -1,17 +1,9 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-
-@model TeacherApp.Models.Teacher
+﻿@model TeacherApp.Models.Teacher
 
 @{
     ViewData["Title"] = "CreateTeacher";
 
 }
-
-
-
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="~/css/UserSignUp.css">
@@ -187,10 +179,12 @@
 
 
                     <div class="login-register">
-                        <li><a asp-area="" asp-controller="UserPanel" asp-action="UserLogin"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                        <a asp-area="" asp-controller="UserPanel" asp-action="UserLogin"><i class="fas fa-sign-in-alt"></i> Login</a>
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
 
             <script type="text/javascript" src="assets/js/bootstrap.js"></script>
 </body>
