@@ -15,13 +15,29 @@ namespace TeacherApp.Models
         public DbSet<Course> Courses { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<TeacherCourse> TeachersCourses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // represent many-to-many relationship by mapping two separate one-to-many relationship
+            modelBuilder.Entity<TeacherCourse>()
+                .HasKey(tc => new { tc.TeacherID, tc.CourseID });
+
+            modelBuilder.Entity<TeacherCourse>()
+                .HasOne(tc => tc.Teacher)
+                .WithMany(t => t.TeachersCourses)
+                .HasForeignKey(tc => tc.CourseID);
+
+            modelBuilder.Entity<TeacherCourse>()
+                .HasOne(tc => tc.Course)
+                .WithMany(c => c.TeachersCourses)
+                .HasForeignKey(tc => tc.TeacherID);
+
             modelBuilder.Entity<Person>().ToTable("Persons");
             modelBuilder.Entity<Course>().ToTable("Courses");
             modelBuilder.Entity<Review>().ToTable("Review");
             modelBuilder.Entity<Teacher>().ToTable("Teachers");
+            modelBuilder.Entity<TeacherCourse>().ToTable("TeacherCourses");
         }
     }
 }

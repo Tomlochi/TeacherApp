@@ -23,19 +23,16 @@ namespace TeacherApp.Models
                 // create new entities
                 Course linearAlgebra = new Course
                 {
-                    //CourseID = 1,
                     CourseName = "Linear Algebra",
                     Credits = 5
                 };
                 Course calculus = new Course
                 {
-                    //CourseID = 2,
                     CourseName = "Calculus",
                     Credits = 5
                 };
                 Teacher noa = new Teacher
                 {
-                    //ID = 3,
                     FirstName = "Noa",
                     LastName = "Cohen",
                     Phone = "0526666666",
@@ -43,7 +40,7 @@ namespace TeacherApp.Models
                     Email = "noacohen@gmail.com",
                     Address = "Tel Aviv",
                     DateOfBirth = new DateTime(1991, 03, 03),
-                    IsAdmin = false,
+                    isAdmin = false,
                     Degree = "Computer Science",
                     Institution = "Collage of Managment",
                     Graduated = new DateTime(2018,08,01),
@@ -56,7 +53,6 @@ namespace TeacherApp.Models
                 noa.AddCourse(calculus);
                 Person tom = new Person
                 {
-                    //ID = 2,
                     FirstName = "Tom",
                     LastName = "Lochi",
                     Phone = "0523333333",
@@ -64,14 +60,13 @@ namespace TeacherApp.Models
                     Email = "tomlohchi@gmail.com",
                     Address = "Tel Aviv",
                     DateOfBirth = new DateTime(1991, 02, 02),
-                    IsAdmin = true,
+                    isAdmin = true,
                     Degree = "Computer Science",
                     Institution = "Collage of Managment",
                     Password = "1234"
                 };
                 Person liran = new Person
                 {
-                    //ID = 1,
                     FirstName = "Liran",
                     LastName = "Ziv",
                     Phone = "0525555555",
@@ -79,7 +74,7 @@ namespace TeacherApp.Models
                     Email = "liranziv@gmail.com",
                     Address = "Ramat Gan",
                     DateOfBirth = new DateTime(1991, 01, 01),
-                    IsAdmin = true,
+                    isAdmin = true,
                     Degree = "Computer Science",
                     Institution = "Collage of Managment",
                     Password = "1234"

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeacherApp.Models;
 
 namespace TeacherApp.Migrations
 {
     [DbContext(typeof(TeacherAppContext))]
-    partial class TeacherAppContextModelSnapshot : ModelSnapshot
+    [Migration("20180825171305_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,7 +93,7 @@ namespace TeacherApp.Migrations
                     b.ToTable("Review");
                 });
 
-            modelBuilder.Entity("TeacherApp.Models.TeacherCourse", b =>
+            modelBuilder.Entity("TeacherApp.Models.TeachersCourses", b =>
                 {
                     b.Property<int>("TeacherID");
 
@@ -131,7 +133,7 @@ namespace TeacherApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TeacherApp.Models.TeacherCourse", b =>
+            modelBuilder.Entity("TeacherApp.Models.TeachersCourses", b =>
                 {
                     b.HasOne("TeacherApp.Models.Teacher", "Teacher")
                         .WithMany("TeachersCourses")
