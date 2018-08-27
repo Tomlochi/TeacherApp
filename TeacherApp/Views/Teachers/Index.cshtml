@@ -9,6 +9,14 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<form asp-controller="Teachers" asp-action="Index">
+    <p>
+        Look for a teacher: <input type="text" name="searchString">
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -17,9 +25,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Phone)
@@ -53,9 +58,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LessonPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagePath)
             </th>
             <th></th>
         </tr>
@@ -96,10 +98,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.LessonPrice)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImagePath)
-            </td>
-
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ID">Details</a> |

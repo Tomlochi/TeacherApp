@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeacherApp.Models;
 
 namespace TeacherApp.Migrations
 {
     [DbContext(typeof(TeacherAppContext))]
-    partial class TeacherAppContextModelSnapshot : ModelSnapshot
+    [Migration("20180825172615_InitialCreate2")]
+    partial class InitialCreate2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,24 +93,13 @@ namespace TeacherApp.Migrations
                     b.ToTable("Review");
                 });
 
-            modelBuilder.Entity("TeacherApp.Models.TeacherCourse", b =>
-                {
-                    b.Property<int>("TeacherID");
-
-                    b.Property<int>("CourseID");
-
-                    b.HasKey("TeacherID", "CourseID");
-
-                    b.HasIndex("CourseID");
-
-                    b.ToTable("TeacherCourses");
-                });
-
             modelBuilder.Entity("TeacherApp.Models.Teacher", b =>
                 {
                     b.HasBaseType("TeacherApp.Models.Person");
 
                     b.Property<string>("About");
+
+                    b.Property<int?>("CourseID");
 
                     b.Property<DateTime>("Graduated");
 
@@ -117,6 +108,8 @@ namespace TeacherApp.Migrations
                     b.Property<int>("LessonPrice");
 
                     b.Property<int>("Rating");
+
+                    b.HasIndex("CourseID");
 
                     b.ToTable("Teachers");
 
@@ -131,17 +124,11 @@ namespace TeacherApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TeacherApp.Models.TeacherCourse", b =>
+            modelBuilder.Entity("TeacherApp.Models.Teacher", b =>
                 {
-                    b.HasOne("TeacherApp.Models.Teacher", "Teacher")
-                        .WithMany("TeachersCourses")
-                        .HasForeignKey("CourseID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TeacherApp.Models.Course", "Course")
-                        .WithMany("TeachersCourses")
-                        .HasForeignKey("TeacherID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("TeacherApp.Models.Course")
+                        .WithMany("Teachers")
+                        .HasForeignKey("CourseID");
                 });
 #pragma warning restore 612, 618
         }
