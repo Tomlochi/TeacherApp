@@ -14,6 +14,7 @@
     <!-- Website CSS style -->
     <link rel="stylesheet" type="text/css" href="~/css/site.css">
     <link rel="stylesheet" type="text/css" href="~/css/adminDashboard.css">
+    <link rel="stylesheet" type="text/css" href="~/css/userDashboard.css">
     <!-- Website Font style -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -21,19 +22,16 @@
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body id="Dashboard">
     <div class="container-fluid main-container">
         <div class="col-md-2 sidebar">
             <div class="row">
                 <div class="container">
                     <div class="row profile">
-                        <div class="col-md-2">
-                       </div>
                     </div>
                 </div>
     <!-- END SIDEBAR USER TITLE -->
     <!-- uncomment code for absolute positioning tweek see top comment in css -->
-    <div class="absolute-wrapper"> </div>
     <!-- Menu -->
     <div class="side-menu">
         <nav class="navbar navbar-default" role="navigation">
@@ -55,9 +53,10 @@
                             Developer
                         </div>
                     </div>
+                    <!-- END SIDEBAR USER TITLE -->
+
                 </div>
                 <ul class="nav navbar-nav">
-
                     <li class="active"><a href="#"><span class="fab fa-dashcube"></span> Dashboard</a></li>
                     <li class="panel panel-default" id="dropdown">
                         <a data-toggle="collapse" href="#dropdown-lvl1">
@@ -94,25 +93,25 @@
                     </li>
                     <li><a href="#"><span class="fas fa-search"></span> Search a Course</a></li>
                     @*<!-- Dropdown-->
-            <li class="panel panel-default" id="dropdown">
-                <a data-toggle="collapse" href="#dropdown-lvl3">
-                    <span class="glyphicon glyphicon-user"></span> Sub Level <span class="caret"></span>
-                </a>
-                <!-- Dropdown level 1 -->
-                <div id="dropdown-lvl3" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#">Bla Bla</a></li>
-                            <li><a href="#">Bla List</a></li>
-                            <li><a href="#">Bla Bli List</a></li>
-                        </ul>
+                <li class="panel panel-default" id="dropdown">
+                    <a data-toggle="collapse" href="#dropdown-lvl3">
+                        <span class="glyphicon glyphicon-user"></span> Sub Level <span class="caret"></span>
+                    </a>
+                    <!-- Dropdown level 1 -->
+                    <div id="dropdown-lvl3" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#">Bla Bla</a></li>
+                                <li><a href="#">Bla List</a></li>
+                                <li><a href="#">Bla Bli List</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </li>*@
+                </li>*@
                     <li><a href="#"><span class="fas fa-cog"></span> Settings</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
-                                    </nav>
+        </nav>
                                 </div>
                             </div>
                         </div>

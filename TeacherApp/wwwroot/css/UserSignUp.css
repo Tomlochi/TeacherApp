@@ -7,7 +7,7 @@ body, html {
 }
 
 .main {
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
 h1.title {
@@ -36,7 +36,7 @@ input::-webkit-input-placeholder {
 }
 
 .main-login {
-    background-color: #333;
+    background-color: #37474F;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -47,14 +47,14 @@ input::-webkit-input-placeholder {
 }
 
 .main-center {
-    margin-top: 30px;
+    margin-top: 0px;
     margin: 0 auto;
-    max-width: 330px;
+    /**/max-width: 400px;
     padding: 40px 40px;
 }
 
 .login-button {
-    margin-top: 5px;
+    margin-top: 4px;
 }
 
 .login-register {
