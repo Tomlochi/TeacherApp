@@ -22,40 +22,33 @@
     '1'
     loginButton.on('click', function (event) {
 
-        var user = ($('#username').val());
-        var pass = ($('#password').val());
-        //  console.log(user, password);
-        console.log('clicked..');
-        if (user && pass) {
-            var auth = {
-                username: user,
-                password: pass
-            }
-            var stringJson = JSON.stringify(auth);
-            console.log(auth);
-            console.log(stringJson);
-
-            $.ajax({
-                url: "UserLogin",
-                contentType: "application/json; charset=utf-8",
-                type: 'POST',
-                dataType: "json",
-                data: JSON.stringify({ username: "user", password: "pass" }),
-                success: window.location.replace("http://localhost:55264/"),
-                error: window.location.replace("http://localhost:55264/UserPanel/UserLogin/");
-            });
-
-
-
-            //$.post("UserLogin", JSON.stringify[{ user: stringJson }], function (result) {
-            //    if (result === "true") {
-            //        console.log("hellow user")
-            //        window.location.replace("http://localhost:55264/");
-            //    } else {
-            //        alert("invalid input !");
-            //        window.location.replace("http://localhost:55264/UserPanel/UserLogin/");
-            //    }
+            //$.ajax({
+            //    url: "UserLogin",
+            //    contentType: "application/json; charset=utf-8",
+            //    type: 'POST',
+            //    dataType: "json",
+            //    data: JSON.stringify({ username: "user", password: "pass" }),
+            //    success: window.location.replace("http://localhost:55264/"),
+            //    error: window.location.replace("http://localhost:55264/UserPanel/UserLogin/");
             //});
+
+            $.post(
+                "UserLogin",
+                { username: $('#username').val(), password: $('#password').val() },
+                function (result)
+                {
+                    if (result)
+                    {
+                        console.log("hellow user")
+                        window.location.replace("http://localhost:55264/");
+                    }
+                    else
+                    {
+                        alert("invalid input !");
+                        window.location.replace("http://localhost:55264/UserPanel/UserLogin/");
+                    }
+                }
+            );
         }
     });
 

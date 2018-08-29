@@ -33,36 +33,18 @@ namespace TeacherApp.Controllers
 
 
         [HttpPost]
-        public string UserLogin(string user)
+        public bool UserLogin(string username, string password)
         {
 
-            string username = "";
-            string password = "";
-            JObject json = JObject.Parse(user);
+            //JObject user = JObject.Parse(userDetails);
+            //Dictionary<string, string> user = JsonConvert.DeserializeObject<Dictionary<string,string>>(userDetails);
+            //string username = user["username"];
+            //string password = user["password"];
 
-
-            foreach (var field in json)
-            {
-                if (field.Key == "username")
-                {
-                    username = field.Value.ToString();
-                }
-                if (field.Key == "password")
-                {
-                    password = field.Value.ToString();
-                }
-            }
-            Person userVerified = (from Person in _context.Persons
+            Person p = (from Person in _context.Persons
                                    where Person.Email == username && Person.Password == password
                                    select Person).FirstOrDefault();
-            if (userVerified != null)
-            {
-                return "true";
-            }
-            else
-            {
-                return "false";
-            }
+            return p != null;
         }
 
 
