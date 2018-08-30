@@ -21,17 +21,6 @@
 
     '1'
     loginButton.on('click', function (event) {
-
-            //$.ajax({
-            //    url: "UserLogin",
-            //    contentType: "application/json; charset=utf-8",
-            //    type: 'POST',
-            //    dataType: "json",
-            //    data: JSON.stringify({ username: "user", password: "pass" }),
-            //    success: window.location.replace("http://localhost:55264/"),
-            //    error: window.location.replace("http://localhost:55264/UserPanel/UserLogin/");
-            //});
-
             $.post(
                 "UserLogin",
                 { username: $('#username').val(), password: $('#password').val() },

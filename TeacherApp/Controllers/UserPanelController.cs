@@ -30,17 +30,9 @@ namespace TeacherApp.Controllers
             return View();
         }
 
-
-
         [HttpPost]
         public bool UserLogin(string username, string password)
         {
-
-            //JObject user = JObject.Parse(userDetails);
-            //Dictionary<string, string> user = JsonConvert.DeserializeObject<Dictionary<string,string>>(userDetails);
-            //string username = user["username"];
-            //string password = user["password"];
-
             Person p = (from Person in _context.Persons
                                    where Person.Email == username && Person.Password == password
                                    select Person).FirstOrDefault();
