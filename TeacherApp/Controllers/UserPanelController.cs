@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using TeacherApp.Models;
 
 namespace TeacherApp.Controllers
@@ -23,10 +25,46 @@ namespace TeacherApp.Controllers
         }
 
 
-        public ActionResult UserLogin()
+        public IActionResult UserLogin()
         {
             return View();
         }
+
+
+
+        [HttpPost]
+        public bool UserLogin(string username, string password)
+        {
+
+            //JObject user = JObject.Parse(userDetails);
+            //Dictionary<string, string> user = JsonConvert.DeserializeObject<Dictionary<string,string>>(userDetails);
+            //string username = user["username"];
+            //string password = user["password"];
+
+            Person p = (from Person in _context.Persons
+                                   where Person.Email == username && Person.Password == password
+                                   select Person).FirstOrDefault();
+            return p != null;
+        }
+
+
+        //[HttpPost]
+        //public IActionResult UserLogin(string email, string password)
+        //{
+        //    var authResult = (from user in _context.Persons where (user.Email == email && user.Password == password) select user).ToList();
+        //    bool existUser = authResult.ToList().Any(user => user.Email == email);
+        //    bool existPass = authResult.ToList().Any(user => user.Password == password);
+        //    if (existUser && existPass)
+        //    {
+        //        return Redirect("/Home/Index");
+        //    }
+        //    else
+        //    {
+        //        ViewBag.Message = "invalid user or password!";
+        //        return View();
+        //    }
+        //}
+
 
         public IActionResult UserSignUp()
         {
@@ -76,19 +114,6 @@ namespace TeacherApp.Controllers
             }
             return View(review);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }
