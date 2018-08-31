@@ -1,26 +1,9 @@
 ﻿$(document).ready(function () {
 
-    //var loginButton = $('.login100-form-btn');
-    ////var user = ReadCookie();
-    //var user = getUserNameFromCookie();
-    ////consol.log(user);
-    //var text = $('.intro').find('p').prepend("<b style=\"font-size: 16px;\">ברוכים הבאים " + user + "! </b> <br>");
-
-    //loginButton.on('click', function (event) {
-    //    removeCookies();
-    //    var username = $('.form-control').find('#inputEmail').val();
-    //    console.log('welcome: ' + username + ' !');
-    //    setCookie('username', username, 1);
-    //});
-
-
-    //var loginButton = $('.login100-form-btn');
-    var loginButton = $('.login100-form-btn');
     var user = getUserNameFromCookie();
     var text = $('.intro').find('p').prepend("<b style=\"font-size: 16px;\">ברוכים הבאים " + user + "! </b> <br>");
-
     '1'
-    loginButton.on('click', function (event) {
+    $('#UserLogin').on('click', function (event) {
 
             //$.ajax({
             //    url: "UserLogin",
@@ -39,17 +22,17 @@
                 {
                     if (result)
                     {
-                        console.log("hellow user")
+                        console.log("hello " + $('#username').val());
                         window.location.replace("http://localhost:55264/");
                     }
                     else
                     {
-                        alert("invalid input !");
+                        alert("invalid input!");
                         window.location.replace("http://localhost:55264/UserPanel/UserLogin/");
                     }
                 }
             );
-        }
+        })
     });
 
 
@@ -111,7 +94,3 @@
 
 
     // **************************
-
-
-
-});

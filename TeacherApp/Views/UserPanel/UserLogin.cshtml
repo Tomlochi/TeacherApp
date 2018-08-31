@@ -5,13 +5,7 @@
     //Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "UserLogin";
 }
-<script runat="server">
-    void PageLoad(Object sender, EventArgs e)
-    {
-        Login1.DestinationPageUrl =
-            String.Format("/UserPanel/UserDashboard?{0}", Request.QueryString.ToString());
-    }
-</script>
+
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="~/css/AdminLogin.css">
@@ -38,8 +32,6 @@
                         <a href="reset.html">Forgot password?</a>
                     </div>
                     <button type="submit" id="UserLogin" class="btn btn-primary">Login</button>
-                    <asp:Login id="Login1" runat="server"
-                               DestinationPageUrl="/UserPanel/UserDashboard"> </asp:Login>
                 </form>
             </div>
         </div>
@@ -107,7 +99,5 @@
 <script>
     if (!window.jQuery) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
 </script>
-
-@*<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="~/js/User/User.js"></script> <!-- Resource CartJS -->
-*@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="~/js/User/User.js"></script>
