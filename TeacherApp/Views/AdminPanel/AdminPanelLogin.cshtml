@@ -11,6 +11,12 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="~/css/AdminLogin.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        if (!window.jQuery) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="~/js/Admin.js"></script>
 </head>
 <body id="LoginForm">
     <div class="container">
@@ -22,23 +28,19 @@
                     <h2>Admin Login</h2>
                     <p>Please enter your email and password</p>
                 </div>
-                <form asp-area="" asp-controller="AdminPanel" asp-action="Dashboard">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <input asp-for="Email" class="form-control" placeholder="Email Address" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="Password" class="form-control" placeholder="Password"  type="password" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                        <div class="forgot">
-                            <a href="~/Views/AdminPanel/Reset.cshtml">Forgot password?</a>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-</div>
+                <form id="Login" method="post">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    </div>
+                    <div class="forgot">
+                        <a href="reset.html">Forgot password?</a>
+                    </div>
+                    <button type="submit" id="UserLogin" class="btn btn-primary">Login</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>

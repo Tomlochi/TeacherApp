@@ -47,7 +47,7 @@ namespace TeacherApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult SearchBestOffer(string courseName)
+        public JsonResult SearchBestOffer(string courseName)
         {
             // join query - the join is represented in teacherCourse model defention iteself
             var c = from teacherCourse in _context.TeachersCourses
@@ -59,13 +59,13 @@ namespace TeacherApp.Controllers
                         price = teacherCourse.Teacher.LessonPrice
                     };
             return Json(c);
-            
         }
 
         public IActionResult UserDashboard()
         {
             return View();
         }
+
 
         // POST: People/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

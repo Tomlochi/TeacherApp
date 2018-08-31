@@ -4,101 +4,98 @@
 @{
     //Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "UserLogin";
-}S
+}
 
-@*<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="~/css/AdminLogin.css">
-
-    </head>
-    <body id="LoginForm">
-        <div class="container">
-            <br /> <br />
-            <div class="login-form">
-                <div class="main-div">
-                    <div class="panel">
-                        <h2>User Login</h2>
-                        <p>Please enter your email and password</p>
-                    </div>
-                    <form id="Login">
-                        <div class="form-group">
-
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                        </div>
-                        <div class="forgot">
-                            <a href="reset.html">Forgot password?</a>
-                        </div>
-                        <button type="submit" id="loginButtun" class="btn btn-primary">Login</button>
-                    </form>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/AdminLogin.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        if (!window.jQuery) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="~/js/User/User.js"></script>
+</head>
+<body id="LoginForm">
+    <div class="container">
+        <br /> <br />
+        <div class="login-form">
+            <div class="main-div">
+                <div class="panel">
+                    <h2>User Login</h2>
+                    <p>Please enter your email and password</p>
                 </div>
+                <form id="Login" method="post">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    </div>
+                    <div class="forgot">
+                        <a href="reset.html">Forgot password?</a>
+                    </div>
+                    <button type="submit" id="UserLogin" class="btn btn-primary">Login</button>
+                </form>
             </div>
         </div>
-    </body>
-    </html>*@
-
-
-<div class="limiter">
-    <div class="container-login100">
-        <div class="wrap-login100">
-            <form class="login100-form validate-form" method="post">
-                <span class="login100-form-title p-b-26">
-                    @{
-                        var data = ViewBag.Message;
-                    }
-                    <span class="error" style="font-size : 16px; color:red;">
-                        @data
-                        <br />
-                    </span>
-                    ברוכים הבאים לחנות האינטרנט שלנו
-                </span>
-                <span class="login100-form-title p-b-48">
-                    <img class="animated fadeInUp" src="~/images/logo.png" style="width : 150px; height: 40px;">
-                    <i class="zmdi zmdi-font"></i>
-                </span>
-
-                <div dir="rtl" class="wrap-input100 validate-input">
-                    <input class="input100" id="username" type="text" name="username">
-                    <span class="focus-input100" data-placeholder="שם משתמש"></span>
-                </div>
-
-                <div dir="rtl" class="wrap-input100 validate-input" data-validate="Enter password">
-                    <span class="btn-show-pass">
-                        <i class="zmdi zmdi-eye"></i>
-                    </span>
-                    <input class="input100" id="password" type="password" name="password">
-                    <span class="focus-input100" data-placeholder="סיסמא"></span>
-                </div>
-
-                <div class="container-login100-form-btn">
-                    <div class="wrap-login100-form-btn">
-                        <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn" style="font-size : 20px;" type="submit">
-                            התחבר
-                        </button>
-                    </div>
-                </div>
-
-                <div class="text-center p-t-115">
-                    <span class="txt1" style="font-size : 16px;">
-                        אין לך משתמש ?
-                    </span>
-
-                    <a class="txt2" href="/users/register" style="font-size : 16px;">
-                        לחץ כאן להרשמה
-                    </a>
-                </div>
-            </form>
-        </div>
     </div>
-</div>
+</body>
+</html>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script>
-    if (!window.jQuery) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
-</script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="~/js/User/User.js"></script> <!-- Resource CartJS -->
+@*<div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" method="post">
+                    <span class="login100-form-title p-b-26">
+                        @{
+                            var data = viewbag.message;
+                        }
+                        <span class="error" style="font-size : 16px; color:red;">
+                            @data
+                            <br />
+                        </span>
+                        ברוכים הבאים לחנות האינטרנט שלנו
+                    </span>
+                    <span class="login100-form-title p-b-48">
+                        <img class="animated fadeinup" src="~/images/logo.png" style="width : 150px; height: 40px;">
+                        <i class="zmdi zmdi-font"></i>
+                    </span>
+
+                    <div dir="rtl" class="wrap-input100 validate-input">
+                        <input class="input100" id="username" type="text" name="username">
+                        <span class="focus-input100" data-placeholder="שם משתמש"></span>
+                    </div>
+
+                    <div dir="rtl" class="wrap-input100 validate-input" data-validate="enter password">
+                        <span class="btn-show-pass">
+                            <i class="zmdi zmdi-eye"></i>
+                        </span>
+                        <input class="input100" id="password" type="password" name="password">
+                        <span class="focus-input100" data-placeholder="סיסמא"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" style="font-size : 20px;" type="submit">
+                                התחבר
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="text-center p-t-115">
+                        <span class="txt1" style="font-size : 16px;">
+                            אין לך משתמש ?
+                        </span>
+
+                        <a class="txt2" href="/users/register" style="font-size : 16px;">
+                            לחץ כאן להרשמה
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>*@
+

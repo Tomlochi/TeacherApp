@@ -48,20 +48,12 @@ namespace TeacherApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public IActionResult Login(string username, string password)
+        public bool AdminPanelLogin(string username, string password)
         {
-            var authResult = (from person in _context.Persons where (person.Email == username && person.Password == password) select person).ToList();
-            bool existUser = authResult.ToList().Any(person => person.Email == username);
-            bool existPass = authResult.ToList().Any(person => person.Password == password);
-            if (existUser && existPass)
-            {
-                return Redirect("/AdminPanel/Dashboard");
-            }
-            else
-            {
-                ViewBag.Message = "invalid Username or Password!";
-                return View();
-            }
+            Person p = (from Person in _context.Persons
+                        where Person.Email == username && Person.Password == password
+                        select Person).FirstOrDefault();
+            return p != null;
         }
 
         // GET: Teachers/Create
