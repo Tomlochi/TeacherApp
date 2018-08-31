@@ -1,8 +1,5 @@
 ﻿$(document).ready(function () {
 
-    var user = getUserNameFromCookie();
-    var text = $('.intro').find('p').prepend("<b style=\"font-size: 16px;\">ברוכים הבאים " + user + "! </b> <br>");
-    '1'
     $('#UserLogin').on('click', function (event) {
 
             //$.ajax({
@@ -17,17 +14,17 @@
 
             $.post(
                 "UserLogin",
-                { username: $('#username').val(), password: $('#password').val() },
-                function (result)
+                { username: $('#inputEmail').val(), password: $('#inputPassword').val() },
+                function (result)   
                 {
                     if (result)
                     {
-                        console.log("hello " + $('#username').val());
-                        window.location.replace("http://localhost:55264/");
+                        console.log("hello " + $('#inputEmail').val());
+                        window.location.replace("http://localhost:55264/UserPanel/UserDashboard");
                     }
                     else
                     {
-                        alert("invalid input!");
+                        alert("Invalid Username/Password!");
                         window.location.replace("http://localhost:55264/UserPanel/UserLogin/");
                     }
                 }
@@ -91,6 +88,21 @@
             document.cookie = key[0] + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";
         }
     }
+
+$(function () {
+    $('.navbar-toggle-sidebar').click(function () {
+        $('.navbar-nav').toggleClass('slide-in');
+        $('.side-body').toggleClass('body-slide-in');
+        $('#search').removeClass('in').addClass('collapse').slideUp(200);
+    });
+
+    $('#search-trigger').click(function () {
+        $('.navbar-nav').removeClass('slide-in');
+        $('.side-body').removeClass('body-slide-in');
+        $('.search-input').focus();
+    });
+});
+
 
 
     // **************************

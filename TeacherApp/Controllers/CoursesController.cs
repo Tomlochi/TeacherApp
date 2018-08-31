@@ -148,5 +148,10 @@ namespace TeacherApp.Controllers
         {
             return _context.Courses.Any(e => e.CourseID == id);
         }
+        public IActionResult SearchResults()
+        {
+            return View();
+        }
     }
+
 }
