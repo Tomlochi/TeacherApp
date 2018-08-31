@@ -35,40 +35,31 @@ namespace TeacherApp.Controllers
         [HttpPost]
         public bool UserLogin(string username, string password)
         {
-
-            //JObject user = JObject.Parse(userDetails);
-            //Dictionary<string, string> user = JsonConvert.DeserializeObject<Dictionary<string,string>>(userDetails);
-            //string username = user["username"];
-            //string password = user["password"];
-
             Person p = (from Person in _context.Persons
                                    where Person.Email == username && Person.Password == password
                                    select Person).FirstOrDefault();
             return p != null;
         }
 
-
-        //[HttpPost]
-        //public IActionResult UserLogin(string email, string password)
-        //{
-        //    var authResult = (from user in _context.Persons where (user.Email == email && user.Password == password) select user).ToList();
-        //    bool existUser = authResult.ToList().Any(user => user.Email == email);
-        //    bool existPass = authResult.ToList().Any(user => user.Password == password);
-        //    if (existUser && existPass)
-        //    {
-        //        return Redirect("/Home/Index");
-        //    }
-        //    else
-        //    {
-        //        ViewBag.Message = "invalid user or password!";
-        //        return View();
-        //    }
-        //}
-
-
         public IActionResult UserSignUp()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult SearchBestOffer(string courseName)
+        {
+            // join query - the join is represented in teacherCourse model defention iteself
+            var c = from teacherCourse in _context.TeachersCourses
+                    where teacherCourse.Course.CourseName == courseName
+                    orderby teacherCourse.Teacher.LessonPrice ascending
+                    select new
+                    {
+                        teacher = teacherCourse.Teacher.FullName(),
+                        price = teacherCourse.Teacher.LessonPrice
+                    };
+            return Json(c);
+            
         }
 
         public IActionResult UserDashboard()
