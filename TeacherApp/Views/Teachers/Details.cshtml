@@ -7,9 +7,11 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Teacher</h4>
+    <h4>
+        @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)
+    </h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal col-md-8">
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
@@ -102,7 +104,14 @@
         </dd>
     </dl>
 </div>
-<div>
+<div class="col-md-4">
+    <video width="320" height="240" controls>
+        <source src="~/images/video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+<div class="row">
     <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
