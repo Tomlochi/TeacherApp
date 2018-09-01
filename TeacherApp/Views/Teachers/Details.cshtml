@@ -100,9 +100,12 @@
                 <div class="container">
                     <h2>Students Say About Me:</h2>
                     <hr />
-                    @for (int i = 0; i < Model.Reviews.Count; i++)
+                    
+                    @{int counter = 0; }
+
+                    @foreach (var review in Model.Reviews)
                     {
-                        @if (i % 2 == 0)
+                        @if (counter % 2 == 0)
                         {
                             <div class="row-fluid">
 
@@ -111,14 +114,12 @@
                         <div class="col-sm-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <span itemscope itemtype="http://schema.org/Review"/>
-                                        <h3 class="panel-title" itemprop="name">Review Title</h3>
+                                    <span itemscope itemtype="http://schema.org/Review" />
+                                    <h3 class="panel-title" itemprop="name">Review Title</h3>
                                 </div><!--/panel-heading-->
                                 <div class="panel-body" itemprop="reviewBody">
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Nihil quaerat aperiam unde nemo suscipit id repellendus ad doloribus quae,
-                                        fugiat quia rem molestias sequi, amet nisi qui cumque iusto earum!
+                                        @review.ReviewContent
                                     </p>
                                     <span itemprop="author" itemscope itemtype="http://schema.org/Person">
                                         <small>
@@ -148,10 +149,21 @@
                                 </div><!--/panel-footer-->
                             </div><!--/panel-->
                         </div><!--/col-sm-6-->
+                        counter = counter+1;
                     }
                 </div>
             </div>
             </div>
+        <div class="row">
+            <div class="col-md-2>">
+                <button type="button">
+                    Add Review
+                </button>
+                <div class="reviewText">
+                    Review: <input type="text" name="text"/>
+                    Rating: <input type=""
+                </div>
+        </div>
         </div>
     </div>
     <!--
