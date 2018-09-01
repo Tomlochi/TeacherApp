@@ -3,7 +3,15 @@
     ViewData["Title"] = "AllTeachers";
     Layout = "~/Views/Shared/AfterLoginLayout.cshtml";
 }
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Website CSS style -->
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
+</head>
+<br />
 <div class="container">
     <div class="row">
         <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
@@ -23,7 +31,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-4 text-center">
                         <figure>
-                            <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle img-responsive">
+                            <img src="~/images/mentor.jpg" alt="" class="img-circle img-rounded" style="max-height:90%; max-width:90%">
                             <figcaption class="ratings">
                                 <p>
                                     Ratings

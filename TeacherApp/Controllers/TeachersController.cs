@@ -58,6 +58,11 @@ namespace TeacherApp.Controllers
         public IActionResult Create()
         {
             return View();
+        }       
+        // GET: Teachers/AllTeachers
+        public IActionResult AllTeachers()
+        {
+            return View();
         }
 
         // POST: Teachers/Create

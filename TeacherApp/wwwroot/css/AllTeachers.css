@@ -4,11 +4,15 @@ body {
     font-family: 'Lato', 'sans-serif';
 }
 
-.profile {
+.profile{
     min-height: 355px;
     display: inline-block;
 }
 
+.well{
+    min-height: 355px;
+    background-color: #607D8B;
+}
 figcaption.ratings {
     margin-top: 20px;
 }
