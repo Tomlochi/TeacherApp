@@ -76,6 +76,25 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
+    <div class="container body-content">
+        <div class="fb-like"
+             data-href="https://www.facebook.com/teachapp1/"
+             data-layout="standard"
+             data-action="like"
+             data-size="small"
+             data-show-faces="true"
+             data-share="true"
+             data-colorscheme="dark">
+        </div>
+        @RenderBody()
+        <hr />
+    </div>
+
+    <footer>
+        <p>&copy; 2018 - TeacherApp</p>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
     <script>
         window.fbAsyncInit = function () {
             FB.init({
@@ -118,26 +137,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/searchBestOffer.js"></script>
-    <div class="container body-content">
-
-        @RenderBody()
-        <hr />
-
-        <div class="fb-like"
-             data-href="https://www.facebook.com/teachapp1/"
-             data-layout="standard"
-             data-action="like"
-             data-size="small"
-             data-show-faces="true"
-             data-share="true"
-             data-colorscheme="dark">
-        </div>
-        <footer>
-            <p>&copy; 2018 - TeacherApp</p>
-        </footer>
-    </div>
-
-    @RenderSection("Scripts", required: false)
 </body>
 </html>
 <!--

@@ -3,115 +3,198 @@
 @{
     ViewData["Title"] = "Details";
 }
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 col-lg-6 pull-left">
+            <div class="well profile" style="margin-left:-15px">
+                <div class="col-sm-12">
+                    <div class="col-xs-12 col-sm-8">
+                        <h2>
+                            @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)
+                        </h2>
+                        <p><strong>About: </strong> @Html.DisplayFor(model => model.About) </p>
+                        <p>
+                            <strong>Degree: </strong>
+                            <span class="tags">
+                                @Html.DisplayFor(model => model.Degree)
+                            </span><br />
+                            <strong>Institution: </strong>
+                            <span class="tags">
+                                @Html.DisplayFor(model => model.Institution)
+                            </span><br />
+                            <strong>Phone Number: </strong>
+                            <span class="tags">
+                                @Html.DisplayFor(model => model.Phone)
+                            </span><br />
+                        </p>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 text-center">
+                        <figure>
+                            <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle img-responsive">
+                            <figcaption class="ratings">
+                                <p>
+                                    Ratings
+                                    <a href="#">
+                                        <span class="fa fa-star"></span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="fa fa-star"></span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="fa fa-star"></span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="fa fa-star"></span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="fa fa-star-o"></span>
+                                    </a>
+                                </p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-xs-12 divider text-center">
+                    <div class="col-xs-12 col-sm-4 emphasis">
+                        <h2><strong> 20,7K </strong></h2>
+                        <p><small>Followers</small></p>
+                        <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 emphasis">
+                        <h2><strong>245</strong></h2>
+                        <p><small>Following</small></p>
+                        <button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile </button>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 emphasis">
+                        <h2><strong>43</strong></h2>
+                        <p><small>Snippets</small></p>
+                        <div class="btn-group dropup btn-block">
+                            <button type="button" class="btn btn-primary"><span class="fa fa-gear"></span> Options </button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu text-left" role="menu">
+                                <li><a href="#"><span class="fa fa-envelope pull-right"></span> Send an email </a></li>
+                                <li><a href="#"><span class="fa fa-list pull-right"></span> Add or remove from a list  </a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><span class="fa fa-warning pull-right"></span>Report this user for spam</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#" class="btn disabled" role="button"> Unfollow </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" style="margin-top:-30px; margin-left:-15px">
+            <video width="560" height="385" controls>
+                <source src="~/images/video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Students Say About Me:</h2>
+            </div>
+        </div>
+    </div>
 
-<h2>Details</h2>
+</div>
+    <!--
+            <dl class="dl-horizontal col-md-8">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateOfBirth)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Degree)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Degree)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Institution)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Institution)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Graduated)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Graduated)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Rating)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Rating)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.About)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.About)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonPrice)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LessonPrice)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ImagePath)
+            </dd>
+        </dl>
+    </div>
 
-<div>
-    <h4>
-        @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)
-    </h4>
-    <hr />
-    <dl class="dl-horizontal col-md-8">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Degree)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Degree)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Institution)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Institution)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Graduated)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Graduated)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Rating)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.About)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.About)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonPrice)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LessonPrice)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>
-    </dl>
-</div>
-<div class="col-md-4">
-    <video width="320" height="240" controls>
-        <source src="~/images/video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-<div class="row">
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="row">
+        <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+        -->
 
