@@ -60,14 +60,6 @@ namespace TeacherApp.Models
                     Teacher = noa,
                     Course = linearAlgebra
                 };
-                Review review = new Review
-                {
-                    Teacher = noa,
-                    TeacherID = noa.ID,
-                    Rating = 5,
-                    ReviewContent = "Great Teacher"
-                };
-                noa.Reviews.Add(review);
                 Person tom = new Person
                 {
                     FirstName = "Tom",
@@ -96,7 +88,15 @@ namespace TeacherApp.Models
                     Institution = "Collage of Managment",
                     Password = "1234"
                 };
-
+                Review review = new Review
+                {
+                    Teacher = noa,
+                    Rating = 5,
+                    ReviewContent = "Great Teacher",
+                    Person = liran,
+                };
+                noa.Reviews.Add(review);
+                //liran.ReviewsSubmittedByUser.Add(review);
                 // add entities to context
                 context.Persons.AddRange(tom, liran);
                 context.TeachersCourses.AddRange(noaLinearAlgebra, noaCalculus);
