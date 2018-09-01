@@ -33,7 +33,7 @@ namespace TeacherApp.Models
         public void AddReview(Review review)
         {
             Reviews.Add(review);
-            Rating = Reviews.Average<Review>(r => r.Rating);
+            Rating = (double)Reviews.Average<Review>(r => r.Rating);
         }
 
     }

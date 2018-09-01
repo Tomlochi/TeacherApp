@@ -46,6 +46,11 @@ namespace TeacherApp.Controllers
             return View();
         }
 
+        public IActionResult SearchBestOffer()
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult SearchBestOffer(string courseName)
         {
@@ -56,8 +61,13 @@ namespace TeacherApp.Controllers
                     select new
                     {
                         teacher = teacherCourse.Teacher.FullName(),
-                        price = teacherCourse.Teacher.LessonPrice
+                        price = teacherCourse.Teacher.LessonPrice,
+                        rating = teacherCourse.Teacher.Rating
                     };
+            if (c == null)
+            {
+                return null;
+            }
             return Json(c.ToList());
         }
 
