@@ -60,6 +60,14 @@ namespace TeacherApp.Models
                     Teacher = noa,
                     Course = linearAlgebra
                 };
+                Review review = new Review
+                {
+                    Teacher = noa,
+                    TeacherID = noa.ID,
+                    Rating = 5,
+                    ReviewContent = "Great Teacher"
+                };
+                noa.Reviews.Add(review);
                 Person tom = new Person
                 {
                     FirstName = "Tom",

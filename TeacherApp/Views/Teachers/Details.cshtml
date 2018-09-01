@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Details";
 }
+<link rel="stylesheet" href="~/css/teacherDetails.css" />
 <br />
 <div class="container">
     <div class="row">
@@ -95,13 +96,64 @@
             </video>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <h2>Students Say About Me:</h2>
+            <div class="col-md-12" id="reviews">
+                <div class="container">
+                    <h2>Students Say About Me:</h2>
+                    <hr />
+                    @for (int i = 0; i < Model.Reviews.Count; i++)
+                    {
+                        @if (i % 2 == 0)
+                        {
+                            <div class="row-fluid">
+
+                            </div>
+                        }
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <span itemscope itemtype="http://schema.org/Review"/>
+                                        <h3 class="panel-title" itemprop="name">Review Title</h3>
+                                </div><!--/panel-heading-->
+                                <div class="panel-body" itemprop="reviewBody">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Nihil quaerat aperiam unde nemo suscipit id repellendus ad doloribus quae,
+                                        fugiat quia rem molestias sequi, amet nisi qui cumque iusto earum!
+                                    </p>
+                                    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                                        <small>
+                                            <span itemprop="name">-- J. Reviewer</span>
+                                        </small>
+                                    </span><!--/author schema -->
+                                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                    <meta itemprop="datePublished" content="01-01-2016">01-01-2016
+
+                                    <span class="pull-right">
+                                        <span class="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                                            <meta itemprop="worstRating" content="1">
+                                            <span itemprop="ratingValue">5</span> /
+                                            <span itemprop="bestRating"> stars </span>
+                                        </span><!--/reviewRating-->
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </span>
+                                </div><!--/panel-body-->
+                                <div class="panel-footer clearfix">
+                                    <div class="col-sm-1"><i class="fa fa-facebook-official fa-2x"></i></div>
+                                    <div class="col-sm-1"><i class="fa fa-twitter-square fa-2x"></i></div>
+                                    <div class="col-sm-1"><i class="fa fa-google-plus fa-2x"></i></div>
+                                </div><!--/panel-footer-->
+                            </div><!--/panel-->
+                        </div><!--/col-sm-6-->
+                    }
+                </div>
+            </div>
             </div>
         </div>
     </div>
-
-</div>
     <!--
             <dl class="dl-horizontal col-md-8">
             <dt>

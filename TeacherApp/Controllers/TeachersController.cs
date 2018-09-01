@@ -67,10 +67,16 @@ namespace TeacherApp.Controllers
 
             var teacher = await _context.Teachers
                 .SingleOrDefaultAsync(m => m.ID == id);
+
             if (teacher == null)
             {
                 return NotFound();
             }
+
+            // load teacher reviews 
+            _context.Entry(teacher)
+                .Collection(t => t.Reviews)
+                .Load();
 
             return View(teacher);
         }
