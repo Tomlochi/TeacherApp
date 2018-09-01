@@ -11,18 +11,22 @@
                 data: { courseName: $("#searchParam").val() },
                 //dataType: 'json',
                 success: function (response) {
-                    console.log("Prepering results for presentation")
-                    //window.location.replace("http://localhost:55264/UserPanel/SearchBestOffer");
+                    console.log("Prepering results for presentation");
+                    if (response == null) {
+                        console.log("No matching courses were found");
+                        // add code
+                    }
+                    window.location.replace("http://localhost:55264/UserPanel/SearchBestOffer");
                     var trHTML = '';
                     $.each(response, function (i, elm) {
-                        for (i = 0; i < resp.data.length; i++) {
-                            trHTML +=
-                                '<tr><td>'
-                                + resp.elm[i].teaher
-                                + '</td><td>'
-                                + resp.elm[i].price
-                                + '</td><td>'
-                        }
+                        trHTML +=
+                            '<tr><td>'
+                            + elm.teacher
+                            + '</td><td>'
+                            + elm.rating
+                            + '</td><td>'
+                            + elm.price
+                            + '</td><td>';
                     });
                     $('#results').append(trHTML);
                 },
