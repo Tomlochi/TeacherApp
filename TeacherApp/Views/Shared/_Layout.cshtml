@@ -69,12 +69,10 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                 </ul>
-                <form id="searchForm" class="navbar-form navbar-left" method="post">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search Courses" id="searchParam">
-                    </div>
-                    <button type="submit" class="btn btn-default" id="search" asp-area="" asp-controller="UserPanel" asp-action="SearchBestOffer">Search</button>
-                </form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search Courses" id="searchParam">
+                </div>
+                <button type="submit" class="btn btn-default" id="search" asp-area="" asp-controller="UserPanel" asp-action="SearchBestOffer">Search</button>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a asp-area="" asp-controller="UserPanel" asp-action="UserSignUp"> <span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a asp-area="" asp-controller="UserPanel" asp-action="UserLogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>

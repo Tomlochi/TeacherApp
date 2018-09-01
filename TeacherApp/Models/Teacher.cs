@@ -14,7 +14,7 @@ namespace TeacherApp.Models
         public DateTime Graduated { get; set; }
 
         [DisplayFormat(NullDisplayText = "No Rating Yet")]
-        public int Rating { set; get; }
+        public double Rating { get; set; }
 
         public string About { set; get; }
 
@@ -22,25 +22,19 @@ namespace TeacherApp.Models
 
         public string ImagePath { get; set; }
 
-        public ICollection<TeacherCourse> TeachersCourses { get; set; }
+        public ICollection<TeacherCourse> TeachersCourses { get; set; } = new List<TeacherCourse>();
 
-        public ICollection<Review> Reviews { get; set; } 
-
-        public void AddCourse(Course course)
-        {
-            TeacherCourse tc = new TeacherCourse
-            {
-                TeacherID = ID,
-                CourseID = course.CourseID,
-                Teacher = this,
-                Course = course
-            };
-            TeachersCourses.Add(tc);
-        }
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
 
         public string FullName()
         {
             return FirstName + " " + LastName;
         }
+        public void AddReview(Review review)
+        {
+            Reviews.Add(review);
+            Rating = Reviews.Average<Review>(r => r.Rating);
+        }
+
     }
 }
