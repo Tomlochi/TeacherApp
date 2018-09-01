@@ -15,7 +15,8 @@ namespace TeacherApp.Models
         public DateTime Graduated { get; set; }
 
         [DisplayFormat(NullDisplayText = "No Rating Yet")]
-        public double Rating { get => Reviews.Average(r=>r.Rating); set => _rating = value; }
+        public double Rating { get; set; }
+        //public double Rating { get => Reviews.Average(r=>r.Rating); set => _rating = value; }
 
         public string About { set; get; }
 
@@ -30,6 +31,17 @@ namespace TeacherApp.Models
         public string FullName()
         {
             return FirstName + " " + LastName;
+        }
+
+        public void UpdateRating()
+        {
+            try
+            {
+                Rating = Reviews.Average(r => r.Rating);
+            } catch (Exception e)
+            {
+            }
+            
         }
     }
 }

@@ -54,6 +54,7 @@ namespace TeacherApp.Controllers
 
             // will also add a new entry to Reviews table
             teacher.Reviews.Add(review);
+            teacher.UpdateRating();
             _context.SaveChanges();
         }
 
