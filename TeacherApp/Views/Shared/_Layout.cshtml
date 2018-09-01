@@ -40,8 +40,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Teachers" asp-action="">Our Teachers</a></li>
-                    <li><a asp-area="" asp-controller="Courses" asp-action="">Courses</a></li>
+                    <li><a asp-area="" asp-controller="Teachers" asp-action="" id="teachers">Our Teachers</a></li>
+                    <li><a asp-area="" asp-controller="Courses" asp-action="" id="courses">Courses</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                 </ul>
@@ -57,7 +57,7 @@
                     <li><a asp-area="" asp-controller="AdminPanel" asp-action="AdminPanelLogin"><i class="fas fa-user-tie"></i> Admin</a></li>
                 </ul>
             </div>
-          
+
         </div>
     </nav>
     <div class="container body-content">
@@ -92,5 +92,26 @@
     </environment>
 
     @RenderSection("Scripts", required: false)
+    <script src="~/js/getCookie.js"></script>
+    <script>
+        document.getElementById("teachers").onclick = function () {
+            var myCookie = getCookie("userEmail");
+            console.log(myCookie);
+            if (myCookie == null) {
+                alert("Please Sign Up");
+            }
+        };
+    </script>
+    <script>
+        document.getElementById("courses").onclick = function () {
+            var myCookie = getCookie("userEmail");
+            console.log(myCookie);
+            if (myCookie == null) {
+                alert("Please Sign Up");
+            }
+        };
+    </script>
 </body>
 </html>
+
+
