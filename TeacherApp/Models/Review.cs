@@ -13,7 +13,7 @@ namespace TeacherApp.Models
         public Teacher Teacher { get; set; }
         public int TeacherID { get; set; }
         public string ReviewContent { get; set; }
-
-
+        public Person Person { get; set; }
+        public int PersonID { get; set; }
     }
 }

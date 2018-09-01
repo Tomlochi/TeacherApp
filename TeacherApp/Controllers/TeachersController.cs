@@ -37,25 +37,52 @@ namespace TeacherApp.Controllers
         }
 
         [HttpPost]
-        public async void AddReview(int id, string text, int rating)
+        public async Task<IActionResult> AddReview(int teacherID, string text, int rating)
         {
+            if (Request.Cookies["userid"] == null)
+            {
+                return Json(new { status = "error", message = "Please sign in to submit a review" });
+            }
+            int personID;
+            try
+            {
+                personID = Int32.Parse(Request.Cookies["userid"]);
+            } catch (Exception e)
+            {
+                return Json(new { status = "error", message = "Failed to get user details. " + e.Message });
+            }
             
             Teacher teacher = await _context.Teachers
-                .SingleAsync(t => t.ID == id);
+                .SingleAsync(t => t.ID == teacherID);
+            Person person = await _context.Persons
+                .SingleAsync(p => p.ID == personID);
+
+            var previousReview = from r in _context.Reviews
+                                 where r.PersonID == person.ID
+                                 where r.TeacherID == teacher.ID
+                                 select r;
+            // a review already exists for this user
+            if (previousReview != null)
+            {
+                return Json(new { status="error", message="A review for " + teacher.FullName() + " Already exists from user"});
+            }
 
             Review review = new Review
             {
                 Published = DateTime.Now,
                 Teacher = teacher,
-                TeacherID = id,
+                TeacherID = teacherID,
                 Rating = rating,
-                ReviewContent = text
+                ReviewContent = text,
+                Person = person,
+                PersonID = personID
             };
 
             // will also add a new entry to Reviews table
             teacher.Reviews.Add(review);
             teacher.UpdateRating();
             _context.SaveChanges();
+            return View(teacher);
         }
 
         // GET: Teachers/Details/5
@@ -193,8 +220,5 @@ namespace TeacherApp.Controllers
         {
             return _context.Teachers.Any(e => e.ID == id);
         }
-
-
-
     }
 }
