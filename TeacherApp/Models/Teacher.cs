@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace TeacherApp.Models
 {
-
     public class Teacher : Person
     {
         [DataType(DataType.Date)]
@@ -30,11 +29,5 @@ namespace TeacherApp.Models
         {
             return FirstName + " " + LastName;
         }
-        public void AddReview(Review review)
-        {
-            Reviews.Add(review);
-            Rating = Reviews.Average<Review>(r => r.Rating);
-        }
-
     }
 }

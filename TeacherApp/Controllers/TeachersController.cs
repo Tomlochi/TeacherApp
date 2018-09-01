@@ -36,6 +36,27 @@ namespace TeacherApp.Controllers
             return View("~/Views/Home/Index.cshtml");
         }
 
+        [HttpPost]
+        public async void AddReview(int id, string text, int rating)
+        {
+            
+            Teacher teacher = await _context.Teachers
+                .SingleAsync(t => t.ID == id);
+
+            Review review = new Review
+            {
+                Published = DateTime.Now,
+                Teacher = teacher,
+                TeacherID = id,
+                Rating = rating,
+                ReviewContent = text
+            };
+
+            // will also add a new entry to Reviews table
+            teacher.Reviews.Add(review);
+            _context.SaveChanges();
+        }
+
         // GET: Teachers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -165,5 +186,8 @@ namespace TeacherApp.Controllers
         {
             return _context.Teachers.Any(e => e.ID == id);
         }
+
+
+
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeacherApp.Models;
 
 namespace TeacherApp.Migrations
 {
     [DbContext(typeof(TeacherAppContext))]
-    partial class TeacherAppContextModelSnapshot : ModelSnapshot
+    [Migration("20180901131556_mig2")]
+    partial class mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,8 +57,6 @@ namespace TeacherApp.Migrations
                     b.Property<string>("Gender");
 
                     b.Property<string>("Institution");
-
-                    b.Property<bool>("IsAdmin");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -127,7 +127,7 @@ namespace TeacherApp.Migrations
 
             modelBuilder.Entity("TeacherApp.Models.Review", b =>
                 {
-                    b.HasOne("TeacherApp.Models.Teacher", "Teacher")
+                    b.HasOne("TeacherApp.Models.Teacher")
                         .WithMany("Reviews")
                         .HasForeignKey("TeacherID")
                         .OnDelete(DeleteBehavior.Cascade);
