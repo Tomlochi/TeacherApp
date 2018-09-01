@@ -52,14 +52,14 @@ namespace TeacherApp.Controllers
         {
             // join query - the join is represented in teacherCourse model defention iteself
             var c = from teacherCourse in _context.TeachersCourses
-                    where teacherCourse.Course.CourseName == courseName
+                    where teacherCourse.Course.CourseName.ToLower() == courseName.ToLower()
                     orderby teacherCourse.Teacher.LessonPrice ascending
                     select new
                     {
                         teacher = teacherCourse.Teacher.FullName(),
                         price = teacherCourse.Teacher.LessonPrice
                     };
-            return Json(c);
+            return Json(c.ToList());
         }
 
         public IActionResult UserDashboard()

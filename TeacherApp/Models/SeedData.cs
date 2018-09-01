@@ -15,7 +15,7 @@ namespace TeacherApp.Models
                 serviceProvider.GetRequiredService<DbContextOptions<TeacherAppContext>>()))
             {
                 // Look for any data saved to the context
-                if (context.Persons.Any() || context.Teachers.Any() || context.Courses.Any() )
+                if (context.Persons.Any() || context.Teachers.Any() || context.Courses.Any())
                 {
                     return; // DB has been seeded.
                 }
@@ -50,7 +50,16 @@ namespace TeacherApp.Models
                     ImagePath = "",
                     Password = "1234"
                 };
-                noa.AddCourse(calculus);
+                TeacherCourse noaCalculus = new TeacherCourse
+                {
+                    Teacher = noa,
+                    Course = calculus
+                };
+                TeacherCourse noaLinearAlgebra = new TeacherCourse
+                {
+                    Teacher = noa,
+                    Course = linearAlgebra
+                };
                 Person tom = new Person
                 {
                     FirstName = "Tom",
@@ -82,7 +91,7 @@ namespace TeacherApp.Models
 
                 // add entities to context
                 context.Persons.AddRange(tom, liran);
-                context.Courses.AddRange(calculus, linearAlgebra);
+                context.TeachersCourses.AddRange(noaLinearAlgebra, noaCalculus);
                 context.Teachers.Add(noa);
                 context.SaveChanges();
             }
