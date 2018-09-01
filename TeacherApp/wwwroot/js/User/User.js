@@ -2,34 +2,30 @@
 
     $('#UserLogin').on('click', function (event) {
 
-            //$.ajax({
-            //    url: "UserLogin",
-            //    contentType: "application/json; charset=utf-8",
-            //    type: 'POST',
-            //    dataType: "json",
-            //    data: JSON.stringify({ username: "user", password: "pass" }),
-            //    success: window.location.replace("http://localhost:55264/"),
-            //    error: window.location.replace("http://localhost:55264/UserPanel/UserLogin/");
-            //});
+        //$.ajax({
+        //    url: "UserLogin",
+        //    contentType: "application/json; charset=utf-8",
+        //    type: 'POST',
+        //    dataType: "json",
+        //    data: JSON.stringify({ username: "user", password: "pass" }),
+        //    success: window.location.replace("http://localhost:55264/"),
+        //    error: window.location.replace("http://localhost:55264/UserPanel/UserLogin/");
+        //});
 
-            $.post(
-                "UserLogin",
-                { username: $('#inputEmail').val(), password: $('#inputPassword').val() },
-                function (result)   
-                {
-                    if (result)
-                    {
-                        console.log("hello " + $('#inputEmail').val());
-                        window.location.replace("http://localhost:55264/UserPanel/UserDashboard");
-                    }
-                    else
-                    {
-                        alert("Invalid Username/Password!");
-                        window.location.replace("http://localhost:55264/UserPanel/UserLogin/");
-                    }
+        $.post(
+            "UserLogin",
+            { username: $('#inputEmail').val(), password: $('#inputPassword').val() },
+            function (result) {
+                if (result) {
+                    console.log("hello " + $('#inputEmail').val());
+                    window.location.replace("http://localhost:55264/UserPanel/UserDashboard");
                 }
-            );
-        })
+                else {
+                    alert("Invalid Username/Password!");
+                    window.location.replace("http://localhost:55264/UserPanel/UserLogin/");
+                }
+            }
+        );
     });
 
 
@@ -69,11 +65,11 @@
         var ca = document.cookie.split(';');
         for (var i = 0; i < ca.length; i++) {
             var c = ca[i];
-            while (c.charAt(0) == ' ') {
+            while (c.charAt(0) === ' ') {
                 c = c.substring(1);
             }
             ;
-            if (c.indexOf(name) == 0) {
+            if (c.indexOf(name) === 0) {
                 return c.substring(name.length, c.length);
             }
         }
