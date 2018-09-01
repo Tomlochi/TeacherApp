@@ -38,7 +38,8 @@ namespace TeacherApp.Controllers
             Person p = (from Person in _context.Persons
                                    where Person.Email == username && Person.Password == password
                                    select Person).FirstOrDefault();
-            return p != null;
+
+                return p != null;
         }
 
         public IActionResult UserSignUp()
@@ -63,7 +64,7 @@ namespace TeacherApp.Controllers
 
         public IActionResult UserDashboard()
         {
-            return View();
+                return View();
         }
 
 

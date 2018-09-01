@@ -40,7 +40,7 @@ namespace TeacherApp.Models
                     Email = "noacohen@gmail.com",
                     Address = "Tel Aviv",
                     DateOfBirth = new DateTime(1991, 03, 03),
-                    isAdmin = false,
+                    IsAdmin = false,
                     Degree = "Computer Science",
                     Institution = "Collage of Managment",
                     Graduated = new DateTime(2018,08,01),
@@ -69,7 +69,7 @@ namespace TeacherApp.Models
                     Email = "tomlohchi@gmail.com",
                     Address = "Tel Aviv",
                     DateOfBirth = new DateTime(1991, 02, 02),
-                    isAdmin = true,
+                    IsAdmin = true,
                     Degree = "Computer Science",
                     Institution = "Collage of Managment",
                     Password = "1234"
@@ -83,7 +83,7 @@ namespace TeacherApp.Models
                     Email = "liranziv@gmail.com",
                     Address = "Ramat Gan",
                     DateOfBirth = new DateTime(1991, 01, 01),
-                    isAdmin = true,
+                    IsAdmin = true,
                     Degree = "Computer Science",
                     Institution = "Collage of Managment",
                     Password = "1234"
