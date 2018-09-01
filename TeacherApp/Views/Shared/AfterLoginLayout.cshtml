@@ -1,62 +1,148 @@
 ﻿
 @{
-ViewData["Title"] = "AfterLogin";
+    ViewData["Title"] = "AfterLogin";
 }
-
-<h2>AfterLogin</h2>
 <!DOCTYPE html>
- <html>
- <head>
+<html>
+<head>
 
-     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <title>@ViewData["Title"] - TeachApp</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TeachApp</title>
 
-     <environment include="Development">
-         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-         <link rel="stylesheet" href="~/css/site.css" />
-         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-         <script>
-             if (!window.jQuery) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
-         </script>
-         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-         <script src="~/js/searchBestOffer.js"></script>
-     </environment>
-     <environment exclude="Development">
-         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-     </environment>
-     <script>
-         window.fbAsyncInit = function () {
-             FB.init({
-                 appId: '1528031173963507',
-                 xfbml: true,
-                 version: 'v3.1'
-             });
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+     
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    </environment>
 
-             FB.AppEvents.logPageView();
+    <meta property="og:url" content="http://blabla/teacher.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="This is how we do it" />
+    <meta property="og:description" content="Think you can learn how to learn?" />
+    <meta property="og:image" content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">TeachApp</a>
+            </div>
 
-         };
-         (function (d, s, id) {
-             var js, fjs = d.getElementsByTagName(s)[0];
-             if (d.getElementById(id)) return;
-             js = d.createElement(s); js.id = id;
-             js.src = 'https://connect.facebook.net/en_US/sdk.js';
-             fjs.parentNode.insertBefore(js, fjs);
-         }(document, 'script', 'facebook-jssdk'));
-     </script>
-     <meta property="og:url" content="http://blabla/teacher.html" />
-     <meta property="og:type" content="article" />
-     <meta property="og:title" content="This is how we do it" />
-     <meta property="og:description" content="Think you can learn how to learn?" />
-     <meta property="og:image" content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
- </head>
-    <body>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Teachers" asp-action="" id="teachers">Our Teachers</a></li>
+                    <li><a asp-area="" asp-controller="Courses" asp-action="">Courses</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li>
+                        <div class="navbar-form">
+                            <input type="text" class="form-control" placeholder="Search Courses" id="searchParam" style="margin-right: -20px">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="navbar-form pull-left"><button type="submit" class="btn btn-default" id="search" asp-area="" asp-controller="UserPanel" asp-action="SearchBestOffer">Search</button></div>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">F
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome, User <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"> My Profile</a></li>
+                            <li><a href="#"> Another action</a></li>
+                            <li><a href="#"> Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#"> Logout</a></li>
+                        </ul>
+                    </li>
+                    <li></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container body-content">
+
+        @RenderBody()
+        <hr />
+        <div class="fb-like"
+             data-href="https://www.facebook.com/teachapp1/"
+             data-layout="standard"
+             data-action="like"
+             data-size="small"
+             data-show-faces="true"
+             data-share="true"
+             data-colorscheme="dark">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2018 - TeacherApp</p>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1528031173963507',
+                xfbml: true,
+                version: 'v3.1'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        if (!window.jQuery) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="~/js/searchBestOffer.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery"
+            crossorigin="anonymous"
+            integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+            crossorigin="anonymous"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+    </script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/searchBestOffer.js"></script>
+</body>
+</html>
+<!--
         <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -67,76 +153,27 @@ ViewData["Title"] = "AfterLogin";
                     </button>
                     <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">TeachApp</a>
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Teachers" asp-action="" id="teachers">Our Teachers</a></li>
-                        <li><a asp-area="" asp-controller="Courses" asp-action="">Courses</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    </ul>
-                    <form id="searchForm" class="navbar-form navbar-left" method="post">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search Courses" id="searchParam">
-                        </div>
-                        <button type="submit" class="btn btn-default" id="search" asp-area="" asp-controller="UserPanel" asp-action="SearchBestOffer">Search</button>
-                    </form>
-                    <div class="navbar pull-right">
-                        <ul class="nav pull-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, User <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="/user/preferences"><i class="icon-cog"></i> Preferences</a></li>
-                                    <li><a href="/help/support"><i class="icon-envelope"></i> Contact Support</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="/auth/logout"><i class="icon-off"></i> Logout</a></li>
-                                </ul>
-                            </li>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a asp-area="" asp-controller="Teachers" asp-action="" id="teachers">Our Teachers</a></li>
+                            <li><a asp-area="" asp-controller="Courses" asp-action="">Courses</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                            <li> <input type="text" class="form-control" placeholder="Search Courses" id="searchParam"></li>
+                            <li><button style="display: block" type="submit" class="btn btn-default" id="search" asp-area="" asp-controller="UserPanel" asp-action="SearchBestOffer">Search</button></li>
                         </ul>
+                        <div class="navbar pull-right">
+                            <ul class="nav pull-right">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Welcome, User</a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-            </div>
-        </nav>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-
-            <div class="fb-like"
-                 data-href="https://www.facebook.com/teachapp1/"
-                 data-layout="standard"
-                 data-action="like"
-                 data-size="small"
-                 data-show-faces="true"
-                 data-share="true"
-                 data-colorscheme="dark">
-            </div>
-            <footer>
-                <p>&copy; 2018 - TeacherApp</p>
-            </footer>
-        </div>
-        <environment include="Development">
-            <script src="~/lib/jquery/dist/jquery.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
-            <script src="~/js/searchBestOffer.js"></script>
-
-        </environment>
-        <environment exclude="Development">
-            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                    asp-fallback-test="window.jQuery"
-                    crossorigin="anonymous"
-                    integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-            </script>
-            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                    crossorigin="anonymous"
-                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-            </script>
-            <script src="~/js/site.min.js" asp-append-version="true"></script>
-        </environment>
-
-        @RenderSection("Scripts", required: false)
-    </body>
-</html>
+    -->

@@ -33,7 +33,7 @@ namespace TeacherApp.Controllers
             }
 
             var review = await _context.Reviews
-                .SingleOrDefaultAsync(m => m.ReviewID == id);
+                .SingleOrDefaultAsync(m => m.ID == id);
             if (review == null)
             {
                 return NotFound();
@@ -72,7 +72,7 @@ namespace TeacherApp.Controllers
                 return NotFound();
             }
 
-            var review = await _context.Reviews.SingleOrDefaultAsync(m => m.ReviewID == id);
+            var review = await _context.Reviews.SingleOrDefaultAsync(m => m.ID == id);
             if (review == null)
             {
                 return NotFound();
@@ -87,7 +87,7 @@ namespace TeacherApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ReviewID,Published,Rating,TeacherID,ReviewContent")] Review review)
         {
-            if (id != review.ReviewID)
+            if (id != review.ID)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace TeacherApp.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ReviewExists(review.ReviewID))
+                    if (!ReviewExists(review.ID))
                     {
                         return NotFound();
                     }
@@ -124,7 +124,7 @@ namespace TeacherApp.Controllers
             }
 
             var review = await _context.Reviews
-                .SingleOrDefaultAsync(m => m.ReviewID == id);
+                .SingleOrDefaultAsync(m => m.ID == id);
             if (review == null)
             {
                 return NotFound();
@@ -138,7 +138,7 @@ namespace TeacherApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var review = await _context.Reviews.SingleOrDefaultAsync(m => m.ReviewID == id);
+            var review = await _context.Reviews.SingleOrDefaultAsync(m => m.ID == id);
             _context.Reviews.Remove(review);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -146,7 +146,7 @@ namespace TeacherApp.Controllers
 
         private bool ReviewExists(int id)
         {
-            return _context.Reviews.Any(e => e.ReviewID == id);
+            return _context.Reviews.Any(e => e.ID == id);
         }
     }
 }

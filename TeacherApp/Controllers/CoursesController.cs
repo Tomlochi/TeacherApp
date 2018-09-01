@@ -21,7 +21,10 @@ namespace TeacherApp.Controllers
         // GET: Courses
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Courses.ToListAsync());
+            if (Request.Cookies["userEmail"] != null && Request.Cookies["userPassword"] != null)
+                return View(await _context.Courses.ToListAsync());
+
+            return View("~/Views/Home/Index.cshtml");
         }
 
         // GET: Courses/Details/5

@@ -64,14 +64,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Teachers" asp-action="" id="teachers">Our Teachers</a></li>
-                    <li><a asp-area="" asp-controller="Courses" asp-action="">Courses</a></li>
+                    <li><a asp-area="" asp-controller="Courses" asp-action="" id="courses">Courses</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li> <input type="text" class="form-control" placeholder="Search Courses" id="searchParam"></li>
+                    <li><button style="display: block" type="submit" class="btn btn-default" id="search" asp-area="" asp-controller="UserPanel" asp-action="SearchBestOffer">Search</button></li>
                 </ul>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search Courses" id="searchParam">
-                </div>
-                <button type="submit" class="btn btn-default" id="search" asp-area="" asp-controller="UserPanel" asp-action="SearchBestOffer">Search</button>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a asp-area="" asp-controller="UserPanel" asp-action="UserSignUp"> <span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a asp-area="" asp-controller="UserPanel" asp-action="UserLogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -123,5 +121,24 @@
     </environment>
 
     @RenderSection("Scripts", required: false)
+    <script src="~/js/getCookie.js"></script>
+    <script>
+        document.getElementById("teachers").onclick = function () {
+            var myCookie = getCookie("userEmail");
+            console.log(myCookie);
+            if (myCookie == null) {
+                alert("Please Sign Up");
+            }
+        };
+    </script>
+    <script>
+        document.getElementById("courses").onclick = function () {
+            var myCookie = getCookie("userEmail");
+            console.log(myCookie);
+            if (myCookie == null) {
+                alert("Please Sign Up");
+            }
+        };
+    </script>
 </body>
 </html>

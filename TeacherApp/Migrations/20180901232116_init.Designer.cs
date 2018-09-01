@@ -10,8 +10,8 @@ using TeacherApp.Models;
 namespace TeacherApp.Migrations
 {
     [DbContext(typeof(TeacherAppContext))]
-    [Migration("20180825172615_InitialCreate2")]
-    partial class InitialCreate2
+    [Migration("20180901232116_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,6 +58,8 @@ namespace TeacherApp.Migrations
 
                     b.Property<string>("Institution");
 
+                    b.Property<bool>("IsAdmin");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(20);
@@ -75,8 +77,10 @@ namespace TeacherApp.Migrations
 
             modelBuilder.Entity("TeacherApp.Models.Review", b =>
                 {
-                    b.Property<int>("ReviewID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("PersonID");
 
                     b.Property<DateTime>("Published");
 
@@ -84,13 +88,28 @@ namespace TeacherApp.Migrations
 
                     b.Property<string>("ReviewContent");
 
-                    b.Property<int>("TeacherID");
+                    b.Property<int?>("TeacherID");
 
-                    b.HasKey("ReviewID");
+                    b.HasKey("ID");
+
+                    b.HasIndex("PersonID");
 
                     b.HasIndex("TeacherID");
 
                     b.ToTable("Review");
+                });
+
+            modelBuilder.Entity("TeacherApp.Models.TeacherCourse", b =>
+                {
+                    b.Property<int>("TeacherID");
+
+                    b.Property<int>("CourseID");
+
+                    b.HasKey("TeacherID", "CourseID");
+
+                    b.HasIndex("CourseID");
+
+                    b.ToTable("TeacherCourses");
                 });
 
             modelBuilder.Entity("TeacherApp.Models.Teacher", b =>
@@ -99,17 +118,13 @@ namespace TeacherApp.Migrations
 
                     b.Property<string>("About");
 
-                    b.Property<int?>("CourseID");
-
                     b.Property<DateTime>("Graduated");
 
                     b.Property<string>("ImagePath");
 
                     b.Property<int>("LessonPrice");
 
-                    b.Property<int>("Rating");
-
-                    b.HasIndex("CourseID");
+                    b.Property<double>("Rating");
 
                     b.ToTable("Teachers");
 
@@ -118,17 +133,28 @@ namespace TeacherApp.Migrations
 
             modelBuilder.Entity("TeacherApp.Models.Review", b =>
                 {
-                    b.HasOne("TeacherApp.Models.Teacher")
+                    b.HasOne("TeacherApp.Models.Person", "Person")
+                        .WithMany("ReviewsSubmittedByUser")
+                        .HasForeignKey("PersonID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("TeacherApp.Models.Teacher", "Teacher")
                         .WithMany("Reviews")
                         .HasForeignKey("TeacherID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("TeacherApp.Models.Teacher", b =>
+            modelBuilder.Entity("TeacherApp.Models.TeacherCourse", b =>
                 {
-                    b.HasOne("TeacherApp.Models.Course")
-                        .WithMany("Teachers")
-                        .HasForeignKey("CourseID");
+                    b.HasOne("TeacherApp.Models.Teacher", "Teacher")
+                        .WithMany("TeachersCourses")
+                        .HasForeignKey("CourseID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("TeacherApp.Models.Course", "Course")
+                        .WithMany("TeachersCourses")
+                        .HasForeignKey("TeacherID")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

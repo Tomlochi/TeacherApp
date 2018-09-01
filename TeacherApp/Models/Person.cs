@@ -61,6 +61,8 @@ namespace TeacherApp.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-mm-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
 
-        public bool isAdmin;
+        public bool IsAdmin { get; set; }
+
+        public virtual ICollection<Review> ReviewsSubmittedByUser { get; set; } = new List<Review>();
     }
 }

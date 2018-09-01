@@ -26,6 +26,7 @@ namespace TeacherApp
                 try
                 {
                     var context = services.GetRequiredService<TeacherAppContext>();
+                    context.Database.EnsureDeleted();
                     context.Database.Migrate();
                     SeedData.Initialize(services);
                 }

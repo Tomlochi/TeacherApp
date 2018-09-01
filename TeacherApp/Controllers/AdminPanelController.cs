@@ -51,7 +51,7 @@ namespace TeacherApp.Controllers
         public bool AdminPanelLogin(string username, string password)
         {
             Person p = (from Person in _context.Persons
-                        where Person.Email == username && Person.Password == password
+                        where Person.Email == username && Person.Password == password && Person.IsAdmin == true
                         select Person).FirstOrDefault();
             return p != null;
         }

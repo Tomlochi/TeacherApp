@@ -40,7 +40,7 @@ namespace TeacherApp.Models
                     Email = "noacohen@gmail.com",
                     Address = "Tel Aviv",
                     DateOfBirth = new DateTime(1991, 03, 03),
-                    isAdmin = false,
+                    IsAdmin = false,
                     Degree = "Computer Science",
                     Institution = "Collage of Managment",
                     Graduated = new DateTime(2018,08,01),
@@ -69,7 +69,7 @@ namespace TeacherApp.Models
                     Email = "tomlohchi@gmail.com",
                     Address = "Tel Aviv",
                     DateOfBirth = new DateTime(1991, 02, 02),
-                    isAdmin = true,
+                    IsAdmin = true,
                     Degree = "Computer Science",
                     Institution = "Collage of Managment",
                     Password = "1234"
@@ -83,12 +83,20 @@ namespace TeacherApp.Models
                     Email = "liranziv@gmail.com",
                     Address = "Ramat Gan",
                     DateOfBirth = new DateTime(1991, 01, 01),
-                    isAdmin = true,
+                    IsAdmin = true,
                     Degree = "Computer Science",
                     Institution = "Collage of Managment",
                     Password = "1234"
                 };
-
+                Review review = new Review
+                {
+                    Teacher = noa,
+                    Rating = 5,
+                    ReviewContent = "Great Teacher",
+                    Person = liran,
+                };
+                noa.Reviews.Add(review);
+                //liran.ReviewsSubmittedByUser.Add(review);
                 // add entities to context
                 context.Persons.AddRange(tom, liran);
                 context.TeachersCourses.AddRange(noaLinearAlgebra, noaCalculus);
