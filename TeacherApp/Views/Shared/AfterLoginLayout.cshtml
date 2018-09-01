@@ -6,27 +6,55 @@ ViewData["Title"] = "AfterLogin";
 <h2>AfterLogin</h2>
 <!DOCTYPE html>
  <html>
-    <head>
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - TeacherApp</title>
+ <head>
 
-        <environment include="Development">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-            <link rel="stylesheet" href="~/css/site.css" />
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-        </environment>
-        <environment exclude="Development">
-            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-                    asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                    asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-        </environment>
-    </head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>@ViewData["Title"] - TeachApp</title>
+
+     <environment include="Development">
+         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+         <link rel="stylesheet" href="~/css/site.css" />
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+         <script>
+             if (!window.jQuery) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
+         </script>
+         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+         <script src="~/js/searchBestOffer.js"></script>
+     </environment>
+     <environment exclude="Development">
+         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+     </environment>
+     <script>
+         window.fbAsyncInit = function () {
+             FB.init({
+                 appId: '1528031173963507',
+                 xfbml: true,
+                 version: 'v3.1'
+             });
+
+             FB.AppEvents.logPageView();
+
+         };
+         (function (d, s, id) {
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) return;
+             js = d.createElement(s); js.id = id;
+             js.src = 'https://connect.facebook.net/en_US/sdk.js';
+             fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+     </script>
+     <meta property="og:url" content="http://blabla/teacher.html" />
+     <meta property="og:type" content="article" />
+     <meta property="og:title" content="This is how we do it" />
+     <meta property="og:description" content="Think you can learn how to learn?" />
+     <meta property="og:image" content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
+ </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -37,53 +65,61 @@ ViewData["Title"] = "AfterLogin";
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">TeacherApp</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">TeachApp</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Teachers" asp-action="">Our Teachers</a></li>
+                        <li><a asp-area="" asp-controller="Teachers" asp-action="" id="teachers">Our Teachers</a></li>
                         <li><a asp-area="" asp-controller="Courses" asp-action="">Courses</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     </ul>
-                    <form class="navbar-form navbar-left" action="searchCourses">
+                    <form id="searchForm" class="navbar-form navbar-left" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search Courses">
+                            <input type="text" class="form-control" placeholder="Search Courses" id="searchParam">
                         </div>
-                        <button type="submit" class="btn btn-default">Search</button>
+                        <button type="submit" class="btn btn-default" id="search" asp-area="" asp-controller="UserPanel" asp-action="SearchBestOffer">Search</button>
                     </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <div class="nav-collapse collapse">
-                            <div class="pull-right">
-                                <ul class="nav pull-right">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, User <b class="caret"></b></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="/user/preferences"><i class="icon-cog"></i> Preferences</a></li>
-                                            <li><a href="/help/support"><i class="icon-envelope"></i> Contact Support</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="/auth/logout"><i class="icon-off"></i> Logout</a></li>
-                                        </ul>
-                                    </li>
+                    <div class="navbar pull-right">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, User <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/user/preferences"><i class="icon-cog"></i> Preferences</a></li>
+                                    <li><a href="/help/support"><i class="icon-envelope"></i> Contact Support</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/auth/logout"><i class="icon-off"></i> Logout</a></li>
                                 </ul>
-                            </div>
-                        </div>
-                    </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+
             </div>
         </nav>
         <div class="container body-content">
             @RenderBody()
             <hr />
+
+            <div class="fb-like"
+                 data-href="https://www.facebook.com/teachapp1/"
+                 data-layout="standard"
+                 data-action="like"
+                 data-size="small"
+                 data-show-faces="true"
+                 data-share="true"
+                 data-colorscheme="dark">
+            </div>
             <footer>
                 <p>&copy; 2018 - TeacherApp</p>
             </footer>
         </div>
-
         <environment include="Development">
             <script src="~/lib/jquery/dist/jquery.js"></script>
             <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
             <script src="~/js/site.js" asp-append-version="true"></script>
+            <script src="~/js/searchBestOffer.js"></script>
+
         </environment>
         <environment exclude="Development">
             <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
