@@ -20,9 +20,30 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
 
 </head>
 <body id="Dashboard">
+    <a class="weatherwidget-io" 
+       href="https://forecast7.com/en/32d0934d78/tel-aviv-yafo/" 
+       data-label_1="TEL AVIV-YAFO" 
+       data-label_2="WEATHER" 
+       data-font="Open Sans" 
+       data-icons="Climacons Animated" 
+       data-mode="Forecast" data-days="5" data-textcolor="#f4f4f4">TEL AVIV-YAFO WEATHER</a>
+    <script>
+        !function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = 'https://weatherwidget.io/js/widget.min.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }
+            (document, 'script', 'weatherwidget-io-js');
+    </script>
+    <br />
     <div class="container-fluid main-container">
         <div class="col-md-2 sidebar">
             <div class="row">
@@ -36,65 +57,65 @@
                 <div class="side-menu">
                     <nav class="navbar navbar-default" role="navigation">
                         <!-- Main Menu -->
-                            <div class="side-menu-container">
-                                <div class="profile-sidebar">
-                                    <!-- SIDEBAR USERPIC -->
-                                    <div class="profile-userpic">
-                                        <img src="https://brockportchamber.org/wp-content/uploads/2015/11/user.png" class="img-thumbnail" alt="profilepic">
-                                    </div>
-                                    <!-- END SIDEBAR USERPIC -->
-                                    <!-- SIDEBAR USER TITLE -->
-                                    <div class="profile-usertitle">
-                                        <div class="profile-usertitle-name">
-                                            Marcus Doe
-                                        </div>
-                                        <div class="profile-usertitle-job">
-                                            Developer
-                                        </div>
-                                    </div>
-                                    <!-- END SIDEBAR USER TITLE -->
-
+                        <div class="side-menu-container">
+                            <div class="profile-sidebar">
+                                <!-- SIDEBAR USERPIC -->
+                                <div class="profile-userpic">
+                                    <img src="https://brockportchamber.org/wp-content/uploads/2015/11/user.png" class="img-thumbnail" alt="profilepic">
                                 </div>
-                                <ul class="nav navbar-nav">
-                                    <li class="active"><a href="#"><span class="fab fa-dashcube"></span> Dashboard</a></li>
-                                    <li class="panel panel-default" id="dropdown">
-                                        <a data-toggle="collapse" href="#dropdown-lvl1">
-                                            <span class="fas fa-chalkboard-teacher"></span> Our Teachers <span class="caret"></span>
-                                        </a>
-                                        <!-- Dropdown level 1 -->
-                                        <div id="dropdown-lvl1" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <ul class="nav navbar-nav">
-                                                    <li><a asp-area="" asp-controller="Teachers" asp-action="">All Teachers</a></li>
-                                                    <li><a href="#">Teachers by Institution</a></li>
-                                                    <li><a href="#">Teachers by Degree</a></li>
-                                                </ul>
-                                            </div>
+                                <!-- END SIDEBAR USERPIC -->
+                                <!-- SIDEBAR USER TITLE -->
+                                <div class="profile-usertitle">
+                                    <div class="profile-usertitle-name">
+                                        Marcus Doe
+                                    </div>
+                                    <div class="profile-usertitle-job">
+                                        Developer
+                                    </div>
+                                </div>
+                                <!-- END SIDEBAR USER TITLE -->
+
+                            </div>
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#"><span class="fab fa-dashcube"></span> Dashboard</a></li>
+                                <li class="panel panel-default" id="dropdown">
+                                    <a data-toggle="collapse" href="#dropdown-lvl1">
+                                        <span class="fas fa-chalkboard-teacher"></span> Our Teachers <span class="caret"></span>
+                                    </a>
+                                    <!-- Dropdown level 1 -->
+                                    <div id="dropdown-lvl1" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ul class="nav navbar-nav">
+                                                <li><a asp-area="" asp-controller="Teachers" asp-action="">All Teachers</a></li>
+                                                <li><a href="#">Teachers by Institution</a></li>
+                                                <li><a href="#">Teachers by Degree</a></li>
+                                            </ul>
                                         </div>
-                                    </li>
-                                    <li class="panel panel-default" id="dropdown">
-                                        <a data-toggle="collapse" href="#dropdown-lvl2">
-                                            <span class="fab fa-readme"></span> Reviews <span class="caret"></span>
-                                        </a>
-                                        <!-- Dropdown level 1 -->
-                                        <div id="dropdown-lvl2" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <ul class="nav navbar-nav">
-                                                    <li><a asp-area="" asp-controller="Reviews" asp-action=""> All Reviews</a></li>
-                                                    <li><a asp-area="" asp-controller="Reviews" asp-action="Create"> Leave a Review</a></li>
-                                                    <li><a href="#">Reviews by Institution</a></li>
-                                                    <li><a href="#">Reviews by Degree</a></li>
-                                                    <li><a href="#">Reviews by Course</a></li>
-                                                    <li><a href="#">Reviews by Teacher</a></li>
-                                                </ul>
-                                            </div>
+                                    </div>
+                                </li>
+                                <li class="panel panel-default" id="dropdown">
+                                    <a data-toggle="collapse" href="#dropdown-lvl2">
+                                        <span class="fab fa-readme"></span> Reviews <span class="caret"></span>
+                                    </a>
+                                    <!-- Dropdown level 1 -->
+                                    <div id="dropdown-lvl2" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ul class="nav navbar-nav">
+                                                <li><a asp-area="" asp-controller="Reviews" asp-action=""> All Reviews</a></li>
+                                                <li><a asp-area="" asp-controller="Reviews" asp-action="Create"> Leave a Review</a></li>
+                                                <li><a href="#">Reviews by Institution</a></li>
+                                                <li><a href="#">Reviews by Degree</a></li>
+                                                <li><a href="#">Reviews by Course</a></li>
+                                                <li><a href="#">Reviews by Teacher</a></li>
+                                            </ul>
                                         </div>
-                                    </li>
-                                    <!--<li><a href="#"><span class="fas fa-search"></span> Search </a></li> -->
-                                    <li><a href="#"><span class="fas fa-cog"></span> Settings</a></li>
-                                </ul>
-                            </div><!-- /.navbar-collapse -->
-                        </nav>
+                                    </div>
+                                </li>
+                                <!--<li><a href="#"><span class="fas fa-search"></span> Search </a></li> -->
+                                <li><a href="#"><span class="fas fa-cog"></span> Settings</a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </nav>
                 </div>
             </div>
         </div>
@@ -112,6 +133,10 @@
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
             </div>
+            <a class="twitter-share-button"
+               href="https://twitter.com/intent/tweet">
+                Tweet
+            </a>
         </div>
     </div>
 </body>
