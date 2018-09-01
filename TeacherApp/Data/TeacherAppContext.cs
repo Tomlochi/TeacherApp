@@ -33,9 +33,17 @@ namespace TeacherApp.Models
                 .WithMany(c => c.TeachersCourses)
                 .HasForeignKey(tc => tc.TeacherID);
 
+            modelBuilder.Entity<Review>()
+                .HasKey(r => new { r.TeacherID, r.PersonID });
+
             modelBuilder.Entity<Teacher>()
                 .HasMany(t => t.Reviews)
                 .WithOne(r => r.Teacher)
+                .IsRequired();
+
+            modelBuilder.Entity<Person>()
+                .HasMany(p=> p.ReviewsSubmittedByUser)
+                .WithOne(r => r.Person)
                 .IsRequired();
 
             modelBuilder.Entity<Person>().ToTable("Persons");

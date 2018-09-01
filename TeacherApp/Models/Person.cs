@@ -62,5 +62,7 @@ namespace TeacherApp.Models
         public DateTime DateOfBirth { get; set; }
 
         public bool IsAdmin { get; set; }
+
+        public virtual ICollection<Review> ReviewsSubmittedByUser { get; set; } = new List<Review>();
     }
 }

@@ -33,13 +33,17 @@ namespace TeacherApp.Controllers
 
 
         [HttpPost]
-        public bool UserLogin(string username, string password)
+        public int UserLogin(string username, string password)
         {
             Person p = (from Person in _context.Persons
                                    where Person.Email == username && Person.Password == password
                                    select Person).FirstOrDefault();
 
-                return p != null;
+            if (p != null)
+            {
+                return p.ID;
+            }
+            return 0;
         }
 
         public IActionResult UserSignUp()
