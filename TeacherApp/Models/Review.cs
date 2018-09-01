@@ -11,7 +11,7 @@ namespace TeacherApp.Models
         public DateTime Published { get; set; }
         public int Rating { get; set; }
         public Teacher Teacher { get; set; }
-        public int TeacherID { get; set; }
+        public int? TeacherID { get; set; }
         public string ReviewContent { get; set; }
         public Person Person { get; set; }
         public int? PersonID { get; set; }

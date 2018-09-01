@@ -75,8 +75,10 @@ namespace TeacherApp.Migrations
 
             modelBuilder.Entity("TeacherApp.Models.Review", b =>
                 {
-                    b.Property<int>("ReviewID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("PersonID");
 
                     b.Property<DateTime>("Published");
 
@@ -84,9 +86,11 @@ namespace TeacherApp.Migrations
 
                     b.Property<string>("ReviewContent");
 
-                    b.Property<int>("TeacherID");
+                    b.Property<int?>("TeacherID");
 
-                    b.HasKey("ReviewID");
+                    b.HasKey("ID");
+
+                    b.HasIndex("PersonID");
 
                     b.HasIndex("TeacherID");
 
@@ -127,10 +131,15 @@ namespace TeacherApp.Migrations
 
             modelBuilder.Entity("TeacherApp.Models.Review", b =>
                 {
+                    b.HasOne("TeacherApp.Models.Person", "Person")
+                        .WithMany("ReviewsSubmittedByUser")
+                        .HasForeignKey("PersonID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("TeacherApp.Models.Teacher", "Teacher")
                         .WithMany("Reviews")
                         .HasForeignKey("TeacherID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("TeacherApp.Models.TeacherCourse", b =>
@@ -138,12 +147,12 @@ namespace TeacherApp.Migrations
                     b.HasOne("TeacherApp.Models.Teacher", "Teacher")
                         .WithMany("TeachersCourses")
                         .HasForeignKey("CourseID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("TeacherApp.Models.Course", "Course")
                         .WithMany("TeachersCourses")
                         .HasForeignKey("TeacherID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }
