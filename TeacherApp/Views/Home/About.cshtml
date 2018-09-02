@@ -1,8 +1,19 @@
 ﻿@{
     ViewData["Title"] = "About";
 }
+<style>
+    h1 {
+        text-shadow: 2px 2px #FF0000;
+        -webkit-transition: ease text-shadow 2s; /* Safari */
+        transition: color 2s;
+    }
+
+        h1:hover {
+            color: #17202A;
+        }
+</style>
 <header>
-    <h2>@ViewData["Title"]</h2>
+    <h1>@ViewData["Title"]</h1>
     <h3>@ViewData["Message"]</h3>
 
 
