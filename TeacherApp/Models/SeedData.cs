@@ -94,9 +94,10 @@ namespace TeacherApp.Models
                     Rating = 5,
                     ReviewContent = "Great Teacher!",
                     Person = liran,
+                    Published = DateTime.Now
                 };
                 noa.Reviews.Add(review);
-                //liran.ReviewsSubmittedByUser.Add(review);
+                liran.ReviewsSubmittedByUser.Add(review);
                 // add entities to context
                 context.Persons.AddRange(tom, liran);
                 context.TeachersCourses.AddRange(noaLinearAlgebra, noaCalculus);
