@@ -57,11 +57,14 @@ body {
     padding-bottom: 7px;
 
 }
-.animated {
-    -webkit-transition: height 0.2s;
-    -moz-transition: height 0.2s;
-    transition: height 0.2s;
+.avaliar {
+    margin-top: 5px;
+    background-color: #EDEDED;
 }
+
+    .avaliar textarea {
+        width: 100%;
+    }
 
 .stars {
     margin: 20px 0;

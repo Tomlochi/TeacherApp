@@ -15,6 +15,7 @@
                             @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)
                         </h2>
                         <p><strong>About: </strong> @Html.DisplayFor(model => model.About) </p>
+                        <p><strong>Courses: </strong> @Html.DisplayFor(model => model.TeachersCourses.Count) </p>
                         <p>
                             <strong>Degree: </strong>
                             <span class="tags">
@@ -32,27 +33,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-4 text-center">
                         <figure>
-                            <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle img-responsive">
-                            <figcaption class="ratings">
-                                <p>
-                                    Ratings
-                                    <a href="#">
-                                        <span class="fa fa-star"></span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="fa fa-star"></span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="fa fa-star"></span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="fa fa-star"></span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="fa fa-star-o"></span>
-                                    </a>
-                                </p>
-                            </figcaption>
+                            <img src=@Model.ImagePath alt="" class="img-circle img-responsive">
                         </figure>
                     </div>
                 </div>
@@ -198,7 +179,7 @@
                             <div class="row">
                                 <div class="col-sm-3">
                                     <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-                                    <div class="review-block-name">NAME</div>
+                                    <div class="review-block-name"> (@review.PersonID) </div>
                                     <div class="review-block-date">@review.Published<br /></div>
                                 </div>
                                 <div class="col-sm-9">
@@ -218,46 +199,41 @@
 
                                         }
                                     </div>
-                                    <div class="review-block-description">@review.ReviewContent</div>
+                                    <div class="review-block-description">iew.ReviewContent</div>
                                 </div>
                             </div>
                             <hr />
                         }
                     </div>
-                    <div class="row" style="margin-top:40px;">
-                        <div class="col-md-8">
-                            <div class="well-sm">
-                                <div class="text-right">
-                                    <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Leave a Review</a>
-                                </div>
+                    <div class="container">
+                        <div class="row" style="margin-top:50px">
+                            <div class="col-md-12">
+                                <form class="formtest">
+                                    <button type="button" class="btaval btn btn-success" data-toggle="collapse" data-target="#1" onClick="esconder(this)"></button>
+                                    <div id="1" class="collapse">
+                                        <div class="col-md-12 avaliar ">
+                                            <textarea cols="50" id="comentario" name="comment" value="" placeholder="Write your review..."></textarea>
 
-                                <div class="row" id="post-review-box" style="display:none;">
-                                    <div class="col-md-12">
-                                        <form accept-charset="UTF-8" action="" method="post">
-                                            <input id="ratings-hidden" name="rating" type="hidden">
-                                            <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
-
-                                            <div class="text-right">
-                                                <div class="stars starrr" data-rating="0"></div>
-                                                <a class="btn btn-warning btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
-                                                    <span class="glyphicon glyphicon-remove"></span>Cancel
-                                                </a>
-                                                <button class="btn btn-success btn-lg" type="submit">Save</button>
+                                            <div class="stars starrr" data-rating="0">
+                                                <input class="nota" name="rating" type="hidden" value="">
                                             </div>
-                                        </form>
+                                            <div class="text-right">
+                                                <button class="btn btn-success" type="submit" onclick="test()">Submit Review <i class="fa fa-reply"></i> </button>
+                                                <span class="btn btn-danger" data-toggle="collapse" data-target="#1" onClick="mostrar()">Cancel <i class="fa fa-times"></i></span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
             </div>
 
+        </div>
     </div>
-</div>
-<script src="~/js/allTeachers.js"></script>
+    <script src="~/js/allTeachers.js"></script>
     <!--
             <dl class="dl-horizontal col-md-8">
             <dt>

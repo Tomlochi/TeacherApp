@@ -92,7 +92,7 @@ namespace TeacherApp.Models
                 {
                     Teacher = noa,
                     Rating = 5,
-                    ReviewContent = "Great Teacher",
+                    ReviewContent = "Great Teacher!",
                     Person = liran,
                 };
                 noa.Reviews.Add(review);
