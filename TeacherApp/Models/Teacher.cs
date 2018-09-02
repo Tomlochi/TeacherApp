@@ -51,5 +51,16 @@ namespace TeacherApp.Models
             catch(Exception e) { }
             return 0;
         }
+        public int RatingPrecentage(int rating)
+        {
+            if (Reviews.Count == 0) {return 0;}
+            try
+            {
+                int count = Reviews.Where(r => r.Rating == rating).ToList().Count;
+                return count*100/Reviews.Count;
+            }
+            catch (Exception e) { }
+            return 0;
+        }
     }
 }
