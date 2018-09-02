@@ -37,11 +37,19 @@ namespace TeacherApp.Models
         {
             try
             {
-                Rating = Reviews.Average(r => r.Rating);
-            } catch (Exception e)
+                Rating = Reviews.Average(r => (double)r.Rating);
+            } catch (Exception e){}
+        }
+
+        public int RatingCount(int rating)
+        {
+            try
             {
+                int count = Reviews.Where(r => r.Rating == rating).ToList().Count;
+                return count;
             }
-            
+            catch(Exception e) { }
+            return 0;
         }
     }
 }

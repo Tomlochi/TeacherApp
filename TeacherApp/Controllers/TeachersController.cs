@@ -61,6 +61,9 @@ namespace TeacherApp.Controllers
 
             Teacher teacher = await _context.Teachers
                 .SingleAsync(t => t.ID == teacherID);
+            _context.Entry(teacher)
+                .Collection(t => t.Reviews)
+                .Load();
             Person person = await _context.Persons
                 .SingleAsync(p => p.ID == personID);
 
