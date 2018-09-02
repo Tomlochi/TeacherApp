@@ -26,10 +26,35 @@ namespace TeacherApp.Models
                     CourseName = "Linear Algebra",
                     Credits = 5
                 };
+                Course linearAlgebra2 = new Course
+                {
+                    CourseName = "Linear Algebra 2",
+                    Credits = 3
+                };
                 Course calculus = new Course
                 {
                     CourseName = "Calculus",
                     Credits = 5
+                };
+                Course computerStructure = new Course
+                {
+                    CourseName = "Computer Structure",
+                    Credits = 4
+                };
+                Course algorithms = new Course
+                {
+                    CourseName = "Algorithms",
+                    Credits = 4
+                };
+                Course  webApps= new Course
+                {
+                    CourseName = "Web Applications",
+                    Credits = 6
+                };
+                Course  introToCompSci= new Course
+                {
+                    CourseName = "Intro to Computer Science",
+                    Credits = 4
                 };
                 Teacher noa = new Teacher
                 {
@@ -50,6 +75,25 @@ namespace TeacherApp.Models
                     ImagePath = "",
                     Password = "1234"
                 };
+                Teacher roy = new Teacher
+                {
+                    FirstName = "Roy",
+                    LastName = "Schwartz",
+                    Phone = "0526624334",
+                    Gender = "Male",
+                    Email = "Roy@gmail.com",
+                    Address = "Tel Aviv",
+                    DateOfBirth = new DateTime(1990, 06, 26),
+                    IsAdmin = false,
+                    Degree = "Computer Science",
+                    Institution = "Collage of Managment",
+                    Graduated = new DateTime(2018,08,01),
+                    About = "Loves sports and the nature, very skilled with numbers!",
+                    Rating = 0,
+                    LessonPrice = 140,
+                    ImagePath = "",
+                    Password = "1234"
+                };
                 TeacherCourse noaCalculus = new TeacherCourse
                 {
                     Teacher = noa,
@@ -59,6 +103,21 @@ namespace TeacherApp.Models
                 {
                     Teacher = noa,
                     Course = linearAlgebra
+                };
+                TeacherCourse royLinearAlgebra = new TeacherCourse
+                {
+                    Teacher = roy,
+                    Course = linearAlgebra
+                };
+                TeacherCourse royAlgo = new TeacherCourse
+                {
+                    Teacher = roy,
+                    Course = algorithms
+                };
+                TeacherCourse royWebApps = new TeacherCourse
+                {
+                    Teacher = roy,
+                    Course = webApps
                 };
                 Person tom = new Person
                 {
@@ -100,8 +159,9 @@ namespace TeacherApp.Models
                 liran.ReviewsSubmittedByUser.Add(review);
                 // add entities to context
                 context.Persons.AddRange(tom, liran);
-                context.TeachersCourses.AddRange(noaLinearAlgebra, noaCalculus);
+                context.TeachersCourses.AddRange(noaLinearAlgebra, noaCalculus, royAlgo, royLinearAlgebra, royWebApps);
                 context.Teachers.Add(noa);
+                context.Teachers.Add(roy);
                 context.SaveChanges();
             }
         }
