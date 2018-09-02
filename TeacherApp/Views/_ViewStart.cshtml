@@ -1,7 +1,7 @@
-﻿@{
+﻿@*@{
         Layout = "_Layout";
-    }
-@*@{
+    }*@
+@{
         var cookie = Context.Request.Cookies;
         if (cookie.Count > 0) // or other custom logic
         {
@@ -11,4 +11,4 @@
         {
             Layout = "~/Views/Shared/_Layout.cshtml";
         }
-    }*@
+    }
