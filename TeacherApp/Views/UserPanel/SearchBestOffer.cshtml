@@ -2,18 +2,31 @@
     ViewData["Title"] = "SearchBestOffer";
 }
 
-<h2>SearchResults</h2>
+<h2>SearchResults for @ViewData["courseName"]</h2>
 <html>
 <head>
 </head>
 <body>
-    <table id="results" class="col-md-8" >
-        <tr>
-            <th> Teacher Name</th>'
-            <th> Teacher Rating</th>'
-            <th> Lesson Price</th>'
-        </tr>'
-    </table>
+    <div class="row">
+        <table id="results" class="col-md-8 table-bordered table-hover">
+            <tr>
+                <th> Teacher Name</th>
+                <th> Teacher Rating</th>
+                <th> Lesson Price</th>
+            </tr>'
+            @foreach (var result in (List<Dictionary<string, string>>)ViewBag.results)
+            {
+                <tr>
+                    <td>@result["teacher"]</td>
+                    <td>@result["rating"]</td>
+                    <td>@result["price"]</td>
+                </tr>
+            }
+        </table>
+        <br />
+    </div>
+
+
 </body>
 </html>
 
