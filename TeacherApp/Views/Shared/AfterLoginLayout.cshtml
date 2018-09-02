@@ -62,14 +62,10 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome, User <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#"> My Profile</a></li>
-                            <li><a href="#"> Another action</a></li>
-                            <li><a href="#"> Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"> Logout</a></li>
-                        </ul>
+                        <a href="#" class="dropdown-toggle" id="introduction" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
+                    </li>
+                        <li>
+                            <a href="http://localhost:55264/" class="dropdown-toggle" id="logout" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Logout</a>
                     </li>
                     <li></li>
                 </ul>
@@ -107,6 +103,11 @@
             crossorigin="anonymous"
             integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
     </script>
+    <script src="~/js/User/User.js"></script>
+    @*<script>
+        var myCookie = getCookie("userEmail");
+        document.getElementById("introduction").innerHTML = "Welcome" + myCookie;
+    </script>*@
     <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
             asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
             asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
@@ -140,40 +141,3 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
-<!--
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">TeachApp</a>
-                </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a asp-area="" asp-controller="Teachers" asp-action="" id="teachers">Our Teachers</a></li>
-                            <li><a asp-area="" asp-controller="Courses" asp-action="">Courses</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                            <li> <input type="text" class="form-control" placeholder="Search Courses" id="searchParam"></li>
-                            <li><button style="display: block" type="submit" class="btn btn-default" id="search" asp-area="" asp-controller="UserPanel" asp-action="SearchBestOffer">Search</button></li>
-                        </ul>
-                        <div class="navbar pull-right">
-                            <ul class="nav pull-right">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Welcome, User</a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-    -->
