@@ -39,14 +39,17 @@ namespace TeacherApp.Controllers
         [HttpPost]
         public async Task<IActionResult> AddReview(int teacherID, string text, int rating)
         {
-            if (Request.Cookies["userid"] == null)
+            // test user login
+            if (Request.Cookies["userID"] == null)
             {
                 return Json(new { status = "error", message = "Please sign in to submit a review" });
             }
             int personID;
+
+            // try to get userID from cookie
             try
             {
-                personID = Int32.Parse(Request.Cookies["userid"]);
+                personID = Int32.Parse(Request.Cookies["userID"]);
             } catch (Exception e)
             {
                 return Json(new { status = "error", message = "Failed to get user details. " + e.Message });
@@ -105,6 +108,19 @@ namespace TeacherApp.Controllers
             _context.Entry(teacher)
                 .Collection(t => t.Reviews)
                 .Load();
+
+            // load teacher courses
+            _context.Entry(teacher)
+                .Collection(t => t.TeachersCourses)
+                .Load();
+
+            // load person for all teacher reviews
+            var teacherReviews = _context.Reviews.Where(r => r.TeacherID == id);
+            foreach (var r in teacherReviews)
+            {
+                _context.Entry(r).Reference(x => x.Person).Load();
+            }
+          
 
             return View(teacher);
         }

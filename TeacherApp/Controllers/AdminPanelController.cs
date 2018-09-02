@@ -43,6 +43,10 @@ namespace TeacherApp.Controllers
         {
             return View();
         }
+        public IActionResult Statistics()
+        {
+            return View();
+        }
 
         // POST: AdminPanel/Dashboard
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
