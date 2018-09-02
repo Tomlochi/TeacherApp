@@ -2,12 +2,13 @@
 
 @{
     ViewData["Title"] = "Our Teachers";
+    Layout = "~/Views/Shared/AfterLoginLayout.cshtml";
 }
 
 <h2>Our Teachers</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-controller="AdminPanel" asp-action="CreateTeacher">Create New</a>
 </p>
 
 <form asp-controller="Teachers" asp-action="Index">
@@ -40,7 +41,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateOfBirth)
-            </th>            
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Degree)
             </th>
@@ -63,53 +64,54 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfBirth)
-            </td>
-            <td>
-                @Html.DisplayNameFor(model => model.Degree)
-            </td>
-            <td>
-                @Html.DisplayNameFor(model => model.Institution)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Graduated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.About)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LessonPrice)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Degree)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Institution)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Graduated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.About)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LessonPrice)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

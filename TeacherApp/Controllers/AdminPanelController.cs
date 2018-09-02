@@ -52,12 +52,16 @@ namespace TeacherApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public bool AdminPanelLogin(string username, string password)
+        public int AdminPanelLogin(string username, string password)
         {
             Person p = (from Person in _context.Persons
                         where Person.Email == username && Person.Password == password && Person.IsAdmin == true
                         select Person).FirstOrDefault();
-            return p != null;
+            if (p != null)
+            {
+                return p.ID;
+            }
+            return 0;
         }
 
         // GET: Teachers/Create

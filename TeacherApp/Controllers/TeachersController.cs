@@ -22,19 +22,17 @@ namespace TeacherApp.Controllers
         // GET: Teachers
         public async Task<IActionResult> Index(string searchString)
         {
-            if (Request.Cookies["userEmail"] != null && Request.Cookies["userPassword"] != null)
+
+            var teachers = from teacher in _context.Teachers
+                            select teacher;
+
+            if (!String.IsNullOrEmpty(searchString))
             {
-                var teachers = from teacher in _context.Teachers
-                               select teacher;
-
-                if (!String.IsNullOrEmpty(searchString))
-                {
-                    teachers = teachers.Where(t => t.FullName().Contains(searchString));
-                }
-
-                return View(await teachers.ToListAsync());
+                teachers = teachers.Where(t => t.FullName().Contains(searchString));
             }
-            return View("~/Views/Home/Index.cshtml");
+
+            return View(await teachers.ToListAsync());
+
         }
 
         [HttpPost]

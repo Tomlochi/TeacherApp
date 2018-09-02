@@ -8,6 +8,8 @@
                 if (result) {
                     setCookie('userEmail', $('#inputEmail').val(), 1);
                     setCookie('userPassword', $('#inputPassword').val(), 1);
+                    setCookie('userID', result, 1);
+                    setCookie('IsAdmin', 'true', 1);
                     window.location.replace("http://localhost:55264/AdminPanel/Dashboard");
                 }
                 else {

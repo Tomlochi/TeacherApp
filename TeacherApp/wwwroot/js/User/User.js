@@ -11,6 +11,7 @@
                         setCookie('userEmail', $('#inputEmail').val(), 1);
                         setCookie('userPassword', $('#inputPassword').val(), 1);
                         setCookie('userID', result, 1);
+                        setCookie('IsAdmin', 'true', 1);
                         window.location.replace("http://localhost:55264/UserPanel/UserDashboard");
                     }
                     else
@@ -20,8 +21,22 @@
                     }
                 }
             );
-        })
-    });
+    })
+
+
+});
+var name = getUserNameFromCookie();
+    $('#logout').on('click', function ()
+    {
+        removeCookies();
+        window.location.replace("http://localhost:55264/UserPanel/UserLogin");
+       
+        
+    })
+var part1 = name.split("@");
+document.getElementById("introduction").innerHTML = "Welcome " + part1[0];
+document.getElementById("dashboredUserName").innerHTML = "Welcome " + part1[0];
+
 
 
     function setCookie(cname, cvalue, exdays) {
@@ -37,20 +52,45 @@
         var multiple = res.split(";");
         for (var i = 0; i < multiple.length; i++) {
             var key = multiple[i].split("=");
-            document.cookie = key[0] + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";
+            document.cookie = key[i] + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";
         }
     }
 
-//$(function () {
-//    $('.navbar-toggle-sidebar').click(function () {
-//        $('.navbar-nav').toggleClass('slide-in');
-//        $('.side-body').toggleClass('body-slide-in');
-//        $('#search').removeClass('in').addClass('collapse').slideUp(200);
-//    });
+function getUserNameFromCookie() {
+    var name = "userEmail=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 
-//    $('#search-trigger').click(function () {
-//        $('.navbar-nav').removeClass('slide-in');
-//        $('.side-body').removeClass('body-slide-in');
-//        $('.search-input').focus();
-//    });
-//});
+  
+$(function () {
+    $('.navbar-toggle-sidebar').click(function () {
+        $('.navbar-nav').toggleClass('slide-in');
+        $('.side-body').toggleClass('body-slide-in');
+        $('#search').removeClass('in').addClass('collapse').slideUp(200);
+    });
+
+    $('#search-trigger').click(function () {
+        $('.navbar-nav').removeClass('slide-in');
+        $('.side-body').removeClass('body-slide-in');
+        $('.search-input').focus();
+    });
+});
+
+$('#logout').on('click', function () {
+    removeCookies();
+    //alert("Logged Out")
+    window.
+        window.location.replace("http://localhost:55264/UserPanel/UserLogin");
+
+
+})
