@@ -260,6 +260,19 @@ namespace TeacherApp.Controllers
             return _context.Persons.Any(e => e.ID == id);
         }
 
+        public async Task<IActionResult> userTeacherIndex(string searchString)
+        {
 
+            var teachers = from teacher in _context.Teachers
+                           select teacher;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                teachers = teachers.Where(t => t.FullName().Contains(searchString));
+            }
+
+            return View(await teachers.ToListAsync());
+
+        }
     }
 }
