@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-     
+
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -61,11 +61,18 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" id="introduction" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
+                    <li>
+                        <a class="dropdown-toggle" id="Dashbored" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i> Dashboard</a>
                     </li>
-                        <li>
-                            <a href="http://localhost:55264/" class="dropdown-toggle" id="logout" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Logout</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="introduction" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-sign-out-alt"></i></a>
+
+</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:55264/" class="dropdown-toggle" id="logout" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logout <i class="fas fa-sign-out-alt"></i>
+
+</a>
                     </li>
                     <li></li>
                 </ul>
@@ -125,9 +132,9 @@
     </script>
     <script src="~/js/User/User.js"></script>
     @*<script>
-        var myCookie = getCookie("userEmail");
-        document.getElementById("introduction").innerHTML = "Welcome" + myCookie;
-    </script>*@
+            var myCookie = getCookie("userEmail");
+            document.getElementById("introduction").innerHTML = "Welcome" + myCookie;
+        </script>*@
     <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
             asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
             asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
@@ -139,5 +146,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/searchBestOffer.js"></script>
+    <script src="~/js/IsAdmin.js"></script>
 </body>
 </html>

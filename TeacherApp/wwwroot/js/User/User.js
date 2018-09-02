@@ -11,6 +11,7 @@
                         setCookie('userEmail', $('#inputEmail').val(), 1);
                         setCookie('userPassword', $('#inputPassword').val(), 1);
                         setCookie('userID', result, 1);
+                        setCookie('IsAdmin', 'true', 1);
                         window.location.replace("http://localhost:55264/UserPanel/UserDashboard");
                     }
                     else
@@ -28,14 +29,15 @@ var name = getUserNameFromCookie();
     $('#logout').on('click', function ()
     {
         removeCookies();
-        //alert("Logged Out")
-        window.
         window.location.replace("http://localhost:55264/UserPanel/UserLogin");
        
         
     })
 var part1 = name.split("@");
-    document.getElementById("introduction").innerHTML = "Welcome " + part1[0];
+document.getElementById("introduction").innerHTML = "Welcome " + part1[0];
+document.getElementById("dashboredUserName").innerHTML = "Welcome " + part1[0];
+
+
 
     function setCookie(cname, cvalue, exdays) {
         var d = new Date();
