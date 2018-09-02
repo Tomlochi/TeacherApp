@@ -36,6 +36,55 @@ namespace TeacherApp.Controllers
             return View("~/Views/Home/Index.cshtml");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddReview(int teacherID, string text, int rating)
+        {
+            if (Request.Cookies["userid"] == null)
+            {
+                return Json(new { status = "error", message = "Please sign in to submit a review" });
+            }
+            int personID;
+            try
+            {
+                personID = Int32.Parse(Request.Cookies["userid"]);
+            } catch (Exception e)
+            {
+                return Json(new { status = "error", message = "Failed to get user details. " + e.Message });
+            }
+            
+            Teacher teacher = await _context.Teachers
+                .SingleAsync(t => t.ID == teacherID);
+            Person person = await _context.Persons
+                .SingleAsync(p => p.ID == personID);
+
+            var previousReview = from r in _context.Reviews
+                                 where r.PersonID == person.ID
+                                 where r.TeacherID == teacher.ID
+                                 select r;
+            // a review already exists for this user
+            if (previousReview != null)
+            {
+                return Json(new { status="error", message="A review for " + teacher.FullName() + " Already exists from user"});
+            }
+
+            Review review = new Review
+            {
+                Published = DateTime.Now,
+                Teacher = teacher,
+                TeacherID = teacherID,
+                Rating = rating,
+                ReviewContent = text,
+                Person = person,
+                PersonID = personID
+            };
+
+            // will also add a new entry to Reviews table
+            teacher.Reviews.Add(review);
+            teacher.UpdateRating();
+            _context.SaveChanges();
+            return View(teacher);
+        }
+
         // GET: Teachers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -46,10 +95,16 @@ namespace TeacherApp.Controllers
 
             var teacher = await _context.Teachers
                 .SingleOrDefaultAsync(m => m.ID == id);
+
             if (teacher == null)
             {
                 return NotFound();
             }
+
+            // load teacher reviews 
+            _context.Entry(teacher)
+                .Collection(t => t.Reviews)
+                .Load();
 
             return View(teacher);
         }

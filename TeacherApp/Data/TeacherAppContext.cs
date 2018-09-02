@@ -13,9 +13,9 @@ namespace TeacherApp.Models
 
         public DbSet<Person> Persons { get; set; }
         public DbSet<Course> Courses { get; set; }
-        public DbSet<Review> Reviews { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<TeacherCourse> TeachersCourses { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,11 +33,31 @@ namespace TeacherApp.Models
                 .WithMany(c => c.TeachersCourses)
                 .HasForeignKey(tc => tc.TeacherID);
 
+            //modelBuilder.Entity<Review>()
+            //    .HasKey(r => new { r.TeacherID, r.PersonID });
+
+            modelBuilder.Entity<Teacher>()
+                .HasMany(t => t.Reviews)
+                .WithOne(r => r.Teacher)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.SetNull);
+
+
+            modelBuilder.Entity<Person>()
+                .HasMany(p => p.ReviewsSubmittedByUser)
+                .WithOne(r => r.Person)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.SetNull);
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+
             modelBuilder.Entity<Person>().ToTable("Persons");
             modelBuilder.Entity<Course>().ToTable("Courses");
-            modelBuilder.Entity<Review>().ToTable("Review");
             modelBuilder.Entity<Teacher>().ToTable("Teachers");
             modelBuilder.Entity<TeacherCourse>().ToTable("TeacherCourses");
+            modelBuilder.Entity<Review>().ToTable("Review");
         }
     }
 }

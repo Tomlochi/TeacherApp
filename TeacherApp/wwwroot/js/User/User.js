@@ -6,10 +6,11 @@
                 { username: $('#inputEmail').val(), password: $('#inputPassword').val() },
                 function (result)   
                 {
-                    if (result)
+                    if (result != 0)
                     {
                         setCookie('userEmail', $('#inputEmail').val(), 1);
                         setCookie('userPassword', $('#inputPassword').val(), 1);
+                        setCookie('userID', result, 1);
                         window.location.replace("http://localhost:55264/UserPanel/UserDashboard");
                     }
                     else

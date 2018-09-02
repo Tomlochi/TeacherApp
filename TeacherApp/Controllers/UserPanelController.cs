@@ -33,16 +33,25 @@ namespace TeacherApp.Controllers
 
 
         [HttpPost]
-        public bool UserLogin(string username, string password)
+        public int UserLogin(string username, string password)
         {
             Person p = (from Person in _context.Persons
                                    where Person.Email == username && Person.Password == password
                                    select Person).FirstOrDefault();
 
-                return p != null;
+            if (p != null)
+            {
+                return p.ID;
+            }
+            return 0;
         }
 
         public IActionResult UserSignUp()
+        {
+            return View();
+        }
+
+        public IActionResult SearchBestOffer()
         {
             return View();
         }
@@ -57,8 +66,13 @@ namespace TeacherApp.Controllers
                     select new
                     {
                         teacher = teacherCourse.Teacher.FullName(),
-                        price = teacherCourse.Teacher.LessonPrice
+                        price = teacherCourse.Teacher.LessonPrice,
+                        rating = teacherCourse.Teacher.Rating
                     };
+            if (c == null)
+            {
+                return null;
+            }
             return Json(c.ToList());
         }
 
