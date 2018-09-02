@@ -1,18 +1,22 @@
 ﻿@{
     ViewData["Title"] = "About";
 }
-<style>
-    h1 {
-        text-shadow: 2px 2px #FF0000;
-        -webkit-transition: ease text-shadow 2s; /* Safari */
-        transition: color 2s;
-    }
-        h1:hover {
-            color: #17202A;
-        }
-</style>
+<header>
+    <h2>@ViewData["Title"]</h2>
+    <h3>@ViewData["Message"]</h3>
 
-<h1>@ViewData["Title"]</h1>
-<h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+</header>
+<section>
+    <aside>
+        We like this webside a lot!
+    </aside>
+</section>
+<p style="text-shadow: 5px #4286f4;">Use this area to provide additional information.</p>
+<section>
+    <canvas id="canvas" width="400" height="320" style="display: none;"></canvas>
+    <canvas id="canvas2" width="570" height="570" style="border: 1px;"></canvas>
+    <canvas id="canvas3" width="400" height="320" style="display: none;"></canvas>
+</section>
+
+<script src="~/js/canvasGraphic.js"></script>
