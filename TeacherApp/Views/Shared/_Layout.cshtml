@@ -16,7 +16,6 @@
             if (!window.jQuery) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
         </script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="~/js/searchBestOffer.js"></script>
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -68,9 +67,11 @@
                     <li><a asp-area="" asp-controller="Courses" asp-action="" id="courses">Courses</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li> <input type="text" class="form-control" placeholder="Search Courses" id="searchParam"></li>
-                    <li><button style="display: block" type="submit" class="btn btn-default" id="search" asp-area="" asp-controller="UserPanel" asp-action="SearchBestOffer">Search</button></li>
                 </ul>
+                    <form class="navbar-form navbar-left" asp-controller="UserPanelController" asp-action="SearchBestOffer" method="post">
+                       <input name="courseName" type="text" class="form-control" placeholder="Search Courses">
+                       <button type="submit" class="btn btn-default" id="search" asp-area="" asp-controller="UserPanel" asp-action="SearchBestOffer">Search</button>
+                    </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a asp-area="" asp-controller="UserPanel" asp-action="UserSignUp"> <span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a asp-area="" asp-controller="UserPanel" asp-action="UserLogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -102,7 +103,6 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="~/js/searchBestOffer.js"></script>
 
     </environment>
     <environment exclude="Development">

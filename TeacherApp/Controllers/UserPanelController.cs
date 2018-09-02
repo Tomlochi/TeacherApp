@@ -56,9 +56,32 @@ namespace TeacherApp.Controllers
             return View();
         }
 
+        //[HttpPost]
+        //public JsonResult SearchBestOffer(string courseName)
+        //{
+        //    // join query - the join is represented in teacherCourse model defention iteself
+        //    var c = from teacherCourse in _context.TeachersCourses
+        //            where teacherCourse.Course.CourseName.ToLower() == courseName.ToLower()
+        //            orderby teacherCourse.Teacher.LessonPrice ascending
+        //            select new
+        //            {
+        //                teacher = teacherCourse.Teacher.FullName(),
+        //                price = teacherCourse.Teacher.LessonPrice,
+        //                rating = teacherCourse.Teacher.Rating
+        //            };
+        //    if (c == null)
+        //    {
+        //        return null;
+        //    }
+        //    return Json(c.ToList());
+        //}
         [HttpPost]
-        public JsonResult SearchBestOffer(string courseName)
+        public IActionResult SearchBestOffer(string courseName)
         {
+            List<Dictionary<string, string>> results = new List<Dictionary<string, string>>();
+            ViewData["courseName"] = courseName;
+            ViewBag.results = results;
+            if (courseName == null) { return View(); }
             // join query - the join is represented in teacherCourse model defention iteself
             var c = from teacherCourse in _context.TeachersCourses
                     where teacherCourse.Course.CourseName.ToLower() == courseName.ToLower()
@@ -67,13 +90,17 @@ namespace TeacherApp.Controllers
                     {
                         teacher = teacherCourse.Teacher.FullName(),
                         price = teacherCourse.Teacher.LessonPrice,
-                        rating = teacherCourse.Teacher.Rating
+                        rating = teacherCourse.Teacher.Rating,
                     };
-            if (c == null)
+            if (c == null) { return View(); }
+            foreach (var result in c)
             {
-                return null;
-            }
-            return Json(c.ToList());
+                results.Add(new Dictionary<string, string>() { { "teacher", result.teacher },{ "price", result.price.ToString() }, { "rating", result.rating.ToString() } });
+                //results.Add("teacher", result.teacher);
+                //results.Add("price", result.price.ToString());
+                //results.Add("rating", result.rating.ToString());
+            };
+            return View();
         }
 
         public IActionResult UserDashboard()
