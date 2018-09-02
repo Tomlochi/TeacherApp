@@ -1,8 +1,14 @@
+@font-face {
+    font-family: 'Rubik', sans-serif;
+    src: url("https://fonts.googleapis.com/css?family=Rubik");
+}
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: #333;
     color: #F5F5F5;
+    font-family: Rubik;
 }
 
 /* Wrapping element */
