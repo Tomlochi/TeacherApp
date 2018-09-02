@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -37,21 +38,30 @@ namespace TeacherApp.Controllers
         [HttpPost]
         public async Task<IActionResult> AddReview(int teacherID, string text, int rating)
         {
-            if (Request.Cookies["userid"] == null)
+            // test user login
+            if (Request.Cookies["userID"] == null)
             {
+                Response.StatusCode = (int) HttpStatusCode.BadRequest;
                 return Json(new { status = "error", message = "Please sign in to submit a review" });
             }
             int personID;
+
+            // try to get userID from cookie
             try
             {
-                personID = Int32.Parse(Request.Cookies["userid"]);
-            } catch (Exception e)
+                personID = Int32.Parse(Request.Cookies["userID"]);
+            }
+            catch (Exception e)
             {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json(new { status = "error", message = "Failed to get user details. " + e.Message });
             }
-            
+
             Teacher teacher = await _context.Teachers
                 .SingleAsync(t => t.ID == teacherID);
+            _context.Entry(teacher)
+                .Collection(t => t.Reviews)
+                .Load();
             Person person = await _context.Persons
                 .SingleAsync(p => p.ID == personID);
 
@@ -60,27 +70,37 @@ namespace TeacherApp.Controllers
                                  where r.TeacherID == teacher.ID
                                  select r;
             // a review already exists for this user
-            if (previousReview != null)
+            if (previousReview.ToList().Count > 0)
             {
-                return Json(new { status="error", message="A review for " + teacher.FullName() + " Already exists from user"});
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new
+                {
+                    status = "error",
+                    message = "A review for " + teacher.FullName() + " Already exists from user"
+                });
             }
 
             Review review = new Review
             {
                 Published = DateTime.Now,
                 Teacher = teacher,
-                TeacherID = teacherID,
                 Rating = rating,
                 ReviewContent = text,
                 Person = person,
-                PersonID = personID
             };
 
             // will also add a new entry to Reviews table
             teacher.Reviews.Add(review);
+            person.ReviewsSubmittedByUser.Add(review);
+            _context.Reviews.Add(review);
             teacher.UpdateRating();
             _context.SaveChanges();
-            return View(teacher);
+            Response.StatusCode = (int)HttpStatusCode.OK;
+            return Json(new
+            {
+                status = "success",
+                message = "review submited successfuly"
+            });
         }
 
         // GET: Teachers/Details/5
@@ -103,6 +123,19 @@ namespace TeacherApp.Controllers
             _context.Entry(teacher)
                 .Collection(t => t.Reviews)
                 .Load();
+
+            // load teacher courses
+            _context.Entry(teacher)
+                .Collection(t => t.TeachersCourses)
+                .Load();
+
+            // load person for all teacher reviews
+            var teacherReviews = _context.Reviews.Where(r => r.TeacherID == id);
+            foreach (var r in teacherReviews)
+            {
+                _context.Entry(r).Reference(x => x.Person).Load();
+            }
+          
 
             return View(teacher);
         }

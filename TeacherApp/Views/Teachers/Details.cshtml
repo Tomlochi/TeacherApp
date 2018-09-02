@@ -37,42 +37,11 @@
                         </figure>
                     </div>
                 </div>
-                <div class="col-xs-12 divider text-center">
-                    <div class="col-xs-12 col-sm-4 emphasis">
-                        <h2><strong> 20,7K </strong></h2>
-                        <p><small>Followers</small></p>
-                        <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
-                    </div>
-                    <div class="col-xs-12 col-sm-4 emphasis">
-                        <h2><strong>245</strong></h2>
-                        <p><small>Following</small></p>
-                        <button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile </button>
-                    </div>
-                    <div class="col-xs-12 col-sm-4 emphasis">
-                        <h2><strong>43</strong></h2>
-                        <p><small>Snippets</small></p>
-                        <div class="btn-group dropup btn-block">
-                            <button type="button" class="btn btn-primary"><span class="fa fa-gear"></span> Options </button>
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu text-left" role="menu">
-                                <li><a href="#"><span class="fa fa-envelope pull-right"></span> Send an email </a></li>
-                                <li><a href="#"><span class="fa fa-list pull-right"></span> Add or remove from a list  </a></li>
-                                <li class="divider"></li>
-                                <li><a href="#"><span class="fa fa-warning pull-right"></span>Report this user for spam</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#" class="btn disabled" role="button"> Unfollow </a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="col-md-3" style="margin-top:-30px; margin-left:-15px">
             <video width="560" height="385" controls>
-                <source src="~/images/video.mp4" type="video/mp4">
+                <source src="https://r2---sn-ivuoxu-ua8z.googlevideo.com/videoplayback?ratebypass=yes&fvip=2&c=WEB&ei=fLCLW4eCNMeJkgbx8ZWQBg&source=youtube&pl=23&id=o-AKwhIb4rpMvMnluPBaAWEWYZTrcD7_BzkvXy4fJqncqE&requiressl=yes&dur=434.120&ipbits=0&expire=1535902940&sparams=clen,dur,ei,expire,gir,id,ip,ipbits,ipbypass,itag,lmt,mime,mip,mm,mn,ms,mv,pcm2cms,pl,ratebypass,requiressl,source&lmt=1525955962794985&mime=video%2Fmp4&itag=18&key=cms1&ip=23.80.156.4&gir=yes&clen=23133927&signature=833536A61CB49EEB56FA3CFC5081B78EB6ACC157.755BED0E77FEEA5721A48F5F9ABEEE377944C8C4&video_id=GdukKaBNaGQ&title=%D7%90%D7%A8%D7%A5+%D7%A0%D7%94%D7%93%D7%A8%D7%AA&redirect_counter=1&rm=sn-a5mry7l&fexp=23755740&req_id=27f1dc7a33b7a3ee&cms_redirect=yes&ipbypass=yes&mip=77.139.211.196&mm=31&mn=sn-ivuoxu-ua8z&ms=au&mt=1535887421&mv=m&pcm2cms=yes" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -109,12 +78,12 @@
                                 </div>
                                 <div class="pull-left" style="width:180px;">
                                     <div class="progress" style="height:9px; margin:8px 0;">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 1000%">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width:@(Model.RatingCount(5)*100/Model.Reviews.Count)%">
                                             <span class="sr-only">80% Complete (danger)</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="pull-right" style="margin-left:10px;">1</div>
+                                <div class="pull-right" style="margin-left:10px;"> @Model.RatingCount(5) </div>
                             </div>
                             <div class="pull-left">
                                 <div class="pull-left" style="width:35px; line-height:1;">
@@ -122,12 +91,12 @@
                                 </div>
                                 <div class="pull-left" style="width:180px;">
                                     <div class="progress" style="height:9px; margin:8px 0;">
-                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
+                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width:@(Model.RatingCount(4)*100/Model.Reviews.Count)%">
                                             <span class="sr-only">80% Complete (danger)</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="pull-right" style="margin-left:10px;">1</div>
+                                <div class="pull-right" style="margin-left:10px;">@Model.RatingCount(4)</div>
                             </div>
                             <div class="pull-left">
                                 <div class="pull-left" style="width:35px; line-height:1;">
@@ -135,12 +104,12 @@
                                 </div>
                                 <div class="pull-left" style="width:180px;">
                                     <div class="progress" style="height:9px; margin:8px 0;">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: @(Model.RatingCount(3)*100/Model.Reviews.Count)%">
                                             <span class="sr-only">80% Complete (danger)</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="pull-right" style="margin-left:10px;">0</div>
+                                <div class="pull-right" style="margin-left:10px;">@Model.RatingCount(3)</div>
                             </div>
                             <div class="pull-left">
                                 <div class="pull-left" style="width:35px; line-height:1;">
@@ -148,12 +117,12 @@
                                 </div>
                                 <div class="pull-left" style="width:180px;">
                                     <div class="progress" style="height:9px; margin:8px 0;">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: @(Model.RatingCount(2)*100/Model.Reviews.Count)%">
                                             <span class="sr-only">80% Complete (danger)</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="pull-right" style="margin-left:10px;">0</div>
+                                <div class="pull-right" style="margin-left:10px;">@Model.RatingCount(2)</div>
                             </div>
                             <div class="pull-left">
                                 <div class="pull-left" style="width:35px; line-height:1;">
@@ -161,12 +130,12 @@
                                 </div>
                                 <div class="pull-left" style="width:180px;">
                                     <div class="progress" style="height:9px; margin:8px 0;">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: @(Model.RatingCount(1)*100/Model.Reviews.Count)%">
                                             <span class="sr-only">80% Complete (danger)</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="pull-right" style="margin-left:10px;">0</div>
+                                <div class="pull-right" style="margin-left:10px;">@Model.RatingCount(1)</div>
                             </div>
                         </div>
                     </div>
@@ -179,7 +148,7 @@
                             <div class="row">
                                 <div class="col-sm-3">
                                     <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-                                    <div class="review-block-name"> (@review.PersonID) </div>
+                                    <div class="review-block-name"> @review.Person.FirstName @review.Person.LastName </div>
                                     <div class="review-block-date">@review.Published<br /></div>
                                 </div>
                                 <div class="col-sm-9">
@@ -199,7 +168,7 @@
 
                                         }
                                     </div>
-                                    <div class="review-block-description">iew.ReviewContent</div>
+                                    <div class="review-block-description">@review.ReviewContent</div>
                                 </div>
                             </div>
                             <hr />
@@ -207,126 +176,39 @@
                     </div>
                     <div class="container">
                         <div class="row" style="margin-top:50px">
-                            <div class="col-md-12">
-                                <form class="formtest">
-                                    <button type="button" class="btaval btn btn-success" data-toggle="collapse" data-target="#1" onClick="esconder(this)"></button>
-                                    <div id="1" class="collapse">
-                                        <div class="col-md-12 avaliar ">
-                                            <textarea cols="50" id="comentario" name="comment" value="" placeholder="Write your review..."></textarea>
-
-                                            <div class="stars starrr" data-rating="0">
-                                                <input class="nota" name="rating" type="hidden" value="">
-                                            </div>
-                                            <div class="text-right">
-                                                <button class="btn btn-success" type="submit" onclick="test()">Submit Review <i class="fa fa-reply"></i> </button>
-                                                <span class="btn btn-danger" data-toggle="collapse" data-target="#1" onClick="mostrar()">Cancel <i class="fa fa-times"></i></span>
-                                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btaval btn btn-success" data-toggle="collapse" data-target="#1" onClick="hide(this)">Write a review</button>
+                                <div id="1" class="collapse">
+                                    <div class="col-md-12 avaliar form-group">
+                                        <textarea class="form-control" rows="5" cols="50" id="reviewContent" name="comment" value="" placeholder="Write your review..."></textarea>
+                                        <div class="stars starrr" data-rating="0">
+                                            <input class="nota" name="rating" type="hidden" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sel1" style="color: #333">Choose Rating</label>
+                                            <select class="form-control" id="rating">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                        <div class="text-right">
+                                            <button class="btn btn-success" type="submit" id="publish">Submit Review <i class="fa fa-reply"></i> </button>
+                                            <span class="btn btn-danger" data-toggle="collapse" data-target="#1" onClick="show()">Cancel <i class="fa fa-times"></i></span>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-
         </div>
-    </div>
-    <script src="~/js/allTeachers.js"></script>
-    <!--
-            <dl class="dl-horizontal col-md-8">
-            <dt>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.FirstName)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.LastName)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.LastName)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Phone)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Phone)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Gender)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Gender)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Address)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Address)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.DateOfBirth)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.DateOfBirth)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Degree)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Degree)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Institution)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Institution)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Graduated)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Graduated)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Rating)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Rating)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.About)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.About)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.LessonPrice)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.LessonPrice)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.ImagePath)
-            </dd>
-        </dl>
-    </div>
 
-    <div class="row">
-        <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-        <a asp-action="Index">Back to List</a>
     </div>
-
-        -->
+</div>
+<script src="~/js/allTeachers.js"></script>
+<script type="text/javascript" src="~/js/addReview.js"></script>
 

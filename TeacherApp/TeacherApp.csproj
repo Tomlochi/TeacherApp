@@ -12,6 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180901222911_imigrazia.cs" />
+    <Compile Remove="Migrations\20180901222911_imigrazia.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Views\Home\Index1.cshtml" />
     <Content Remove="wwwroot\css\site.min.css" />
     <Content Remove="wwwroot\css\sitecopy.css" />
