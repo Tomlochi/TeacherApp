@@ -1,20 +1,33 @@
-﻿@{
-    ViewData["Title"] = "SearchBestOffer";
-}
+﻿
 
-<h2>SearchResults</h2>
+<h2>Search Results</h2>
 <html>
 <head>
 </head>
 <body>
-    <table id="results" class="col-md-8" >
+    <table id="results" class="col-md-8">
         <tr>
             <th> Teacher Name</th>'
             <th> Teacher Rating</th>'
             <th> Lesson Price</th>'
         </tr>'
+
+            @foreach(var course in )
+            {
+                <tr>
+                <td>
+                    @course.teacher
+                </td><td>
+                    @course.rating
+                </td><td>
+                    @course.price
+                </td>
+                </tr>
+            }
+
     </table>
 </body>
 </html>
+<script src="~/js/searchBestOffer.js"></script>
 
 
