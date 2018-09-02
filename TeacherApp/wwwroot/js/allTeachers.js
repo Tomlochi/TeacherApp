@@ -7,10 +7,10 @@ $(function () {
         nota.val(value);
     });
 });
-function esconder(a) {
+function hide(a) {
     $(a).addClass('hidden');
 }
-function mostrar() {
+function show() {
     if ($('.btaval').hasClass('hidden')) {
         $('.btaval').removeClass('hidden');
     }
